@@ -1,0 +1,259 @@
+@charset "UTF-8";
+
+* {box-sizing: border-box;}
+body, html {margin:0; padding:0;}
+ul ,li {list-style:none;}
+.container {padding-left:240px;}
+section {margin:30px auto; width:90%;}
+
+.gnb {
+	width:200px;
+	height:100%;
+	position:fixed;
+	background:#f5f5f5;
+	padding:30px 20px;
+}
+
+.gnb .logo {
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+.gnb .logo img { width:100%; }
+
+.gnb #profile {
+	position:relative;
+}
+
+.gnb .nickName {
+	font-size:25px;
+	font-weight:bold;
+}
+
+.gnb .email {
+	font-size:12px;
+}
+
+.gnb #profile .img_area {
+	position:absolute;
+	top:0;
+	right:0;
+	width:40px;
+	height:40px;
+}
+
+.gnb #profile .img_area .img {
+	width:100%;
+	height:100%;
+	border:1px solid #000;
+	border-radius:50%;
+	background-size:100%;
+}
+
+.gnb #profile .img_area .img .modify {
+	display:none;
+}
+
+.gnb .simple_info ul {
+	margin:15px 0;
+	padding:0;
+	border-top:1px solid;
+	border-bottom: 1px solid;
+}
+
+.gnb .simple_info ul li {
+	padding:15px 0;
+	position:relative;
+}
+
+.gnb .simple_info ul li a span:last-child {
+	position:absolute;
+	right:15px;
+	top:13px;
+	padding:4px 5px;
+	text-align:center;
+	font-size:11px;
+	font-weight:bold;
+	background:#000;
+	color:white;
+	border-radius:20px;
+}
+
+.gnb .my_category {
+	margin:30px 0;
+	padding-bottom:20px;
+	border-bottom:1px solid;
+}
+
+.gnb .my_category button{
+	width:100%;
+	margin:10px 0;
+	padding:3px;
+	background:none;
+	border:none;
+	text-align:left;
+	position:relative;
+	cursor:pointer;
+}
+
+
+.gnb .my_category button:before, .gnb .my_category button:after {
+	content: ''; 
+	position: absolute; 
+	height: 1px; 
+	width: 5px; 
+	background: #363636; 
+	right: 10px; 
+	top: 9px; 
+	display: block;
+	margin-left:5px;
+}
+
+.gnb .my_category button:before {transform: rotate(-45deg); margin-top: 3px;}
+.gnb .my_category button:after {transform: rotate(45deg); margin-top: 0px;}
+
+.mysimple {
+	display:table;
+	width:90%;
+	margin:auto;
+	border-bottom:1px solid;
+}
+
+.mysimple .campaign_state {
+	width:65%;
+	display:table-cell;
+}
+
+.mysimple .campaign_state ul {
+	width:100%;
+	padding:0;
+	display:table;
+}
+
+.mysimple .campaign_state h3 {
+	margin-left:30px;
+	margin-bottom:30px;
+}
+
+.mysimple .campaign_state ul li {
+	display:table-cell;
+	text-align:center;
+}
+
+.mysimple .campaign_state ul .counting {width:18%;}
+.mysimple .campaign_state ul .next {width:6%; font-weight:bold;}
+
+.mysimple .campaign_state ul .counting .num {
+	font-size:40px;
+	font-weight:bolid;
+}
+
+.mysimple .channel {
+	display:table-cell;
+	width:35%;
+	background:#f5f5f5;
+}
+
+.mysimple .channel ul {
+	display:table;
+	padding:0;
+	width:100%;
+}
+
+.mysimple .channel ul li {
+	display:inline-table;
+	padding:30px 0;
+	text-align:center;
+	width:50%;
+}
+
+
+.apply_list .state ul {
+	width:100%;
+	display:table;
+	padding:0;
+}
+
+.apply_list .state ul li {
+	display:table-cell;
+	position:relative;
+	width:25%;
+	padding:10px 0;
+	text-align:center;
+	background:#f5f5f5;
+}
+
+.apply_list .state ul .active {
+	background:#363636;
+	color:white;
+}
+
+.apply_list .state ul li:before,
+.apply_list .state ul li:after {
+	content: ''; 
+	position: absolute; 
+	height: 14px; 
+	width: 40px; 
+	background: white; 
+	right: -19px; 
+	display: block;
+}
+.apply_list .state ul li:last-child:before,
+.apply_list .state ul li:last-child:after {
+	content:none;
+}
+
+.apply_list .state ul li:before {transform: rotate(45deg); top:2px;}
+.apply_list .state ul li:after {transform: rotate(-45deg); top:23px;}
+
+.remove_user, .modify_pwd, .myChannel, .myPoint, .userInfo {
+	width:600px; 
+	max-width:100%; 
+	padding:30px 50px; 
+	border:1px solid rgb(221, 220, 220); 
+	margin:auto; 
+	line-height: 2;
+	font-size:14px;
+}
+.myPoint {width:600px;}
+
+.remove_user .top_txt {text-align: center;}
+.remove_user .bottom_btn button, .modify_pwd button, .myChannel button, .myPoint button {
+	width:150px; 
+	max-width: 100%; 
+	padding: 10px 30px; 
+	background: #fff; 
+	border: 1px solid rgb(180, 180, 180);
+}
+.myChannel button {width:50px; padding:5px;}
+.myChannel .channel {padding:10px 0;}
+.myChannel .channel input[type='text'] {width:150px;}
+
+.myPoint .myBank table {width: 300px; max-width:100%; border-collapse: separate; border-spacing: 0 10px;}
+.myPoint .myBank table input {width:200px;}
+.myPoint .myBank table select {width:200px;}
+
+.myPoint button {width:70px; padding:5px;}
+.myPoint .myPointHistory .refundBtn {padding:10px 0;}
+.myPoint .myPointHistory .historyList {
+	padding-top:20px; 
+	width:100%; 
+	border-collapse : collapse; 
+	border-spacing: 0; 
+	font-size:14px;
+}
+.myPoint .myPointHistory .historyList tr {text-align: center;}
+.myPoint .myPointHistory .historyList td {border:1px solid rgb(182, 182, 182);}
+.myPoint .info {margin-top:50px;}
+
+.userInfo .userTable {border-collapse: separate; border-spacing: 0 35px; width:100%; max-width:450px;}
+.userInfo .userTable tr td {vertical-align: top;}
+.userInfo .userTable input {border:0; border-bottom: 1px solid rgb(211, 210, 210); width:100%; padding:7px;}
+.userInfo .userTable input[type='radio'] {width:10px;}
+.userInfo .userTable input[type='button'] {width:100px; padding:5px;}
+.userInfo .userTable input[name='addNum'] {width:120px;}
+.userInfo .userTable input[name='add'] {margin:10px 0;}
+.userInfo .userInfoGree button {border:0; padding:5px;}
+.userInfo .infoSubmit {width:100%; margin-top:30px; text-align: center;}
+.userinfo .infoSubmit button {border:0; width:30%; padding:10px; font-size:13px; background-color: #ededed;}
+

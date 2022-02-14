@@ -1,0 +1,78 @@
+@charset "utf-8";
+* {box-sizing: border-box;}
+ul {list-style: none; padding:0; margin:0;}
+a {text-decoration: none; color:inherit;}
+.container {width:450px; margin:100px auto 0 auto;}
+
+
+.login .logo {text-align: center;}
+.login .user_info {width:100%;}
+.login .user_info .user_id, .login .user_info .user_pw {
+    width:100%; 
+    border:1px solid #eee; 
+    border-radius: 10px;
+    margin:10px 0;
+}
+.login .user_info .user_id:active, .login .user_info .user_pw:active {border-color: #ccc;}
+.login .user_info .btns {display: table; width:100%; margin:25px 0 15px 0;}
+.login .user_info .btns .auto_login, .login .user_info .btns .lost_pw {display: table-cell;}
+.login .user_info .btns .auto_login label {cursor: pointer;}
+.login .user_info .btns .lost_pw {text-align: right;}
+.login .user_info .user_id input, .login .user_info .user_pw input {border:0; width: 100%; padding:20px; border-radius:10px;}
+.login .user_info .login_btn {
+    padding: 15px 0; 
+    width: 100%; 
+    text-align: center; 
+    margin-top: 15px; 
+    background: white; 
+    border:1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.login .log_join .btn {width:100%; padding:15px 0; margin:20px 0; border-radius: 10px; text-align: center; cursor: pointer;}
+.login .log_join .naver {background: green; color: white;}
+.login .log_join .kakao {background: yellow;}
+.login .log_join .join {border:1px solid #ccc;}
+.login .bottom_locate {border-top:1px solid #ccc; display: table; padding-top: 20px; width: 100%;}
+.login .bottom_locate .btm_btn {
+    margin:20px 0; 
+    display: table-cell; 
+    border-right:1px solid #ccc; 
+    padding:10px; 
+    text-align: center;
+    cursor: pointer;
+}
+.login .bottom_locate .btm_btn:last-child {border-right: 0;}
+
+
+
+
+.join_1 .logo, .join_2 .logo, .join_3 .logo {text-align:center;}
+.join_1 table.insert_data {width:100%; padding:30px 0;}
+.join_1 table.insert_data tr td {padding:5px 0; font-size:18px;}
+.join_1 table.insert_data tr td input { width:100%; height:50px; font-size:0.7em; border:1px solid #dadada; border-radius:10px; padding:10px 15px;}
+
+.join_1 .agree {font-size:15px;}
+.join_1 .agree label {padding:7px 0; display:block;}
+.join_1 .agree a, .join_1 .agree label span {font-size:12px;}
+
+.join_1 .summit button, 
+.join_1 .simple_join div,
+.join_2 .summit button,
+.join_3 .summit button {width:100%; border-radius:5px; font-size:13px; padding:15px 0; margin:15px 0; border:none; background:#ee8e81;}
+.join_1 .simple_join div {text-align:center;}
+.join_1 .simple_join .kakao {background:#e4ee19}
+.join_1 .simple_join .naver {background:#29ed30}
+
+.join_2 h3, .join_2 p, .join_3 p {text-align:center;}
+.join_2 p {font-size:14px;}
+.join_2 ul {float:left; width:100%; text-align:center;}
+.join_2 ul li {float:left; padding:10px; width:15.5%; min-width:69px; margin:6px 10px; height:50px; line-height:50px; font-size:12px; border:1px solid #212121; border-radius:5px;}
+.join_2 .location {margin:30px 0; float:left; width:100%;}
+.join_2 .location .select_locate {padding:5px 0;}
+.join_2 .location .select_locate select {width:40%; height:30px;}
+.join_2 .location .select_locate select[name='sub_locate'] {margin-left:10px;}
+.join_2 .location .select_locate button {width:30px; height:30px; margin-left:15px; background:#ffd700; border:none;}
+
+.join_3 ul li {float:left; width:100px; height:100px; line-height:100px; background:#f3d4d4; margin:25px; text-align:center;}

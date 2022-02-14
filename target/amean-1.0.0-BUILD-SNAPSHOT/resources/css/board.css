@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+
+.boardTit {width:100%; margin: 15px 0;}
+.boardTit .t01 {font-size: 25px; font-weight: bold; display:table-cell;}
+.boardTit .t02 {font-size: 14px; display: table-cell; padding-left: 15px;}
+
+.boardList {width:90%; margin:30px auto;}
+.boardList .board_list {width:100%; min-width: 1090px; min-height: 300px;}
+.boardList .board_list li {height: 50px; display:table; width:100%; border-bottom: 1px solid #f5f5f5;}
+.boardList .board_list li.board_cate {background:#f5f5f5; border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
+.boardList .board_list li.board_cate .cate01 span,
+.boardList .board_list li.board_cate .cate02 span {border-right:1px solid #ccc; width:90%; display: block;}
+.board_list li .bo_li_ca {color:red;}
+.boardList .board_list li .cate01, .board_list li .bo_li_ca{width:10%; display: table-cell; vertical-align: middle;}
+.boardList .board_list li .cate02, .board_list li .bo_li_ti{width:65%; display: table-cell; vertical-align: middle;}
+.boardList .board_list li .cate03, .board_list li .bo_li_day{width:25%; display: table-cell; vertical-align: middle;}
+.boardList .board_list span {padding: 0 15px;}
+.boardList .board_paging {width:100%; text-align: center; margin:10px 0;}
+.boardList .board_paging ul li {display: inline; padding:10px 15px;}
+.boardList .board_paging ul li.active {background: #eee;}
+.boardList .info_btn {width: 100%; display: table; margin: 40px 0;}
+.boardList .info_btn .half {width:50%; display: table-cell;}
+.boardList .info_btn .half .btn {
+    width: 70%; 
+    padding:10px 20px; 
+    margin:auto; 
+    text-align: center; 
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.boardDetail {width:90%; margin:30px auto; min-height: 300px;}
+.boardDetail .title {display:table; width:100%; min-width: 1090px; background:#f5f5f5; border-top:1px solid #ccc; border-bottom: 1px solid #ccc;}
+.boardDetail .title .t01 {width:10%; display:table-cell; height: 50px; vertical-align: middle;}
+.boardDetail .title .t02 {width:65%; display:table-cell; height: 50px; vertical-align: middle;}
+.boardDetail .title .t03 {width:25%; display:table-cell; height: 50px; vertical-align: middle;}
+.boardDetail .title .t01 span,
+.boardDetail .title .t02 span {border-right:1px solid #ccc; width:90%; display:block; padding:0 15px;}
+.boardDetail .boardContent {width: 100%; padding:30px; margin-top:15px; min-width: 1090px; min-height: 300px; background: #fafafa;}
+
+
+.penalty .txt {padding:40px 0; line-height: 2; font-size: 16px;}
+.penalty .txt h4 {font-size:28px; margin:0;}
+.penalty .warning .card {display: table; padding:40px 0; border-bottom: 1px solid #ccc;}
+.penalty .warning .card:first-child {border-top: 1px solid #ccc;}
+.penalty .warning .card .t01, .penalty .warning .card .t02 {display: table-cell; line-height: 2;}
+.penalty .warning .card .t01 {width:30%; font-size: 18px;}
+.penalty .warning .card .t02 {width:70%; font-size: 16px;}
+
+.use_agree .txt {width:100%; line-height: 2; font-size: 16px; text-align: center; min-height: 400px;}
+
+.inqury {width:95%; margin:auto;}
+.inqury .form_table .table_tr {border-bottom: 1px solid #ccc;display: table; width:100%;}
+.inqury .form_table .table_tr .table_td {display: table-cell;}
+.inqury .form_table .table_tr .table_td input {width:80%;}
+.inqury .form_table .table_tr .table_td textarea {width: 80%; height: 300px; resize: none;}
+.inqury .form_table .table_tr .table_td:first-child {width:10%; padding:10px; vertical-align:top;}
+.inqury .form_table .table_tr .table_td:last-child {width:70%; padding:10px;}
+.inqury .form_table .table_tr .table_td_h2 {width:100%;}
+.inqury .form_table .butt {width:100%; padding: 30px; text-align: right;}
+.inqury .form_table .butt button {
+    width:200px; 
+    padding:15px;
+    border:1px solid #ccc; 
+    border-radius: 10px;
+    background-color: white;
+    color: #ED3739;
+}
+
+
+.faq {width:95%;}
+.faq .list {width:100%; margin:40px 0;}
+.faq .list ul .tit {font-size:18px; color:red; margin:10px 0;}
+.faq .list ul li {width:100%; border:1px solid #ccc; padding:10px; font-size: 16px; cursor: pointer;}
+.faq .list ul li .quest, .faq .list ul li .anser {padding:10px; position: relative;}
+.faq .list ul li .quest span, .faq .list ul li .anser span {font-size:24px; font-weight: bold; color:red; padding:0 10px;}
+.faq .list ul li .anser {min-height: 50px; margin-top: 5px; display: none; padding:10px; background: #eee;}
+.faq .list ul li .quest:after, .faq .list ul li .quest:before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 10px;
+    background: #333;
+    right: 40px;
+    top: 25px;
+    display: block;
+    transition: all .2s;
+}
+.faq .list ul li .quest:before {transform: rotate(45deg); right:46px;}
+.faq .list ul li .quest:after {transform: rotate(-45deg);} 
+.faq .list ul li .quest.active:before {transform: rotate(-45deg);}
+.faq .list ul li .quest.active:after {transform: rotate(45deg);} 
+
+
+
