@@ -9,6 +9,10 @@
         <div class="title">
             <h3>히알루론산 앰플 체험단</h3>
         </div>
+        <div class="btns">
+            <div class="href_btn modify">수정하기</div>
+            <div class="href_btn remove">삭제하기</div>
+        </div>
         <div class="experInfo">
             <div class="channel">
                 <ul>

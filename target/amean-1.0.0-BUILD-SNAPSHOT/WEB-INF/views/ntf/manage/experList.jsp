@@ -6,6 +6,10 @@
 <div class="man_container">
     <section class="exper_list">
 
+		<div class="btn">
+			<a href="${pageContext.request.contextPath }/mana/addExper"><div class="add">캠페인 추가</div></a>
+		</div>
+
 		<div class="exper_filter">
 			<div class="category">
 				<ul class="product_kind">

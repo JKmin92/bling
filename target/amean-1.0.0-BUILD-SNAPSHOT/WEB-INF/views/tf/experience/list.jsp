@@ -43,16 +43,9 @@
 		
 		<section class="experience">
 			
-			<table class="experience_table">
-				<colgroup>
-					<col width="20%" />
-					<col width="20%" />
-					<col width="20%" />
-					<col width="20%" />
-				</colgroup>
-				<tbody>
-					<tr>
-						<td>
+			<ul class="experience_table">
+				
+						<li>
 							<a href="${pageContext.request.contextPath }/experience/detail"><div class="thubm">
 								<img src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg" width="100%" />
 							</div>
@@ -65,8 +58,8 @@
 								</div>
 								<p class="ex_pe">5/10명</p>
 							</div></a>
-						</td>
-						<td>
+						</li>
+						<li>
 							<div class="thubm">
 								<img src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg" width="100%" />
 							</div>
@@ -79,8 +72,8 @@
 								</div>
 								<p class="ex_pe">5/10명</p>
 							</div>
-						</td>
-						<td>
+						</li>
+						<li>
 							<div class="thubm">
 								<img src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg" width="100%" />
 							</div>
@@ -93,8 +86,8 @@
 								</div>
 								<p class="ex_pe">5/10명</p>
 							</div>
-						</td>
-						<td>
+						</li>
+						<li>
 							<div class="thubm">
 								<img src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg" width="100%" />
 							</div>
@@ -107,14 +100,11 @@
 								</div>
 								<p class="ex_pe">5/10명</p>
 							</div>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="5"><div class="banner" style="height:150px; width:100%; margin:100px 0;"></div></td>
-					</tr>
+						</li>
+				
+						<div class="banner" style="height:150px; width:100%; margin:100px 0;"></div>
 					
-					<tr>
-						<td>
+						<li>
 							<div class="thubm">
 								<img src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg" width="100%" />
 							</div>
@@ -127,8 +117,8 @@
 								</div>
 								<p class="ex_pe">5/10명</p>
 							</div>
-						</td>
-						<td>
+						</li>
+						<li>
 							<div class="thubm">
 								<img src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg" width="100%" />
 							</div>
@@ -141,8 +131,8 @@
 								</div>
 								<p class="ex_pe">5/10명</p>
 							</div>
-						</td>
-						<td>
+						</li>
+						<li>
 							<div class="thubm">
 								<img src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg" width="100%" />
 							</div>
@@ -155,8 +145,8 @@
 								</div>
 								<p class="ex_pe">5/10명</p>
 							</div>
-						</td>
-						<td>
+						</li>
+						<li>
 							<div class="thubm">
 								<img src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg" width="100%" />
 							</div>
@@ -169,10 +159,8 @@
 								</div>
 								<p class="ex_pe">5/10명</p>
 							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+						</li>
+					</ul>
 			
 		</section>
 		

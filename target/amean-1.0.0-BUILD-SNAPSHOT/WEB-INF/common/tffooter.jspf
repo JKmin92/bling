@@ -25,7 +25,16 @@
 			</ul>
 		</div>
 	</footer>
+
+	<div class="m_gbn">
+		<ul>
+			<a href="${pageContext.request.contextPath }/"><li>홈</li></a>
+			<a href="${pageContext.request.contextPath }/experience"><li>카테고리</li></a>
+			<a href="${pageContext.request.contextPath }/board/inqury"><li>1:1문의하기</li></a>
+			<a href="${pageContext.request.contextPath}/user/mypage"><li>마이페이지</li></a>
+		</ul>
+	</div>
 	
-	<script src="${pageContext.request.contextPath }/resources/js/script.js?ver=4"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/script.js?ver=16"></script>
 </body>
 </html>

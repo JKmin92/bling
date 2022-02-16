@@ -12,11 +12,13 @@
 
 		<ul class="ex">
 			<li>
-				<div class="ex_thubmnail">
-					<img
-						src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg"
-						width="100%" />
-				</div>
+				<a href="${pageContext.request.contextPath }/experience/detail">
+					<div class="ex_thubmnail">
+						<img
+							src="${pageContext.request.contextPath }/resources/img/ex/main_ex_100x100_2.jpg"
+							width="100%" />
+					</div>
+				</a>
 				<div class="content">
 					<div class="kind"></div>
 					<p class="ex_title">하니네 당근</p>

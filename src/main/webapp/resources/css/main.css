@@ -54,15 +54,30 @@ header .top_menu .hnb > ul .btn .sub_hnb {
 	background:#fff;
 }
 header .top_menu .hnb > ul > li .sub_hnb li {font-size:13px; line-height: 25px;}
+header .top_menu .profile {display: none; width:150px;}
 header .top_menu .search {display:table-cell; position:relative;}
 header .top_menu .search input[type=search] {width:340px; height:40px; padding:10px 20px; border: 1px solid #c5c5c5; border-radius:40px;}
-header .top_menu .search a input[type=image] {position:absolute; width:20px; top:12px; left:305px;}
+header .top_menu .search a input[type=image] {position:absolute; width:20px; top:12px; left:305px; transition: 0.5s;}
+header .top_menu .search .close {display: none; position: absolute; top:11px; right:33px;}
+header .top_menu .search .close img {width:20px;}
 
 
 /** 컨텐츠 **/
 .container {padding-left:240px; margin-top:40px;}
 .container .banner {text-align: center; width:90%; margin:auto; height:200px; background:url('../img/banner/t_banner_1000x200.jpg') no-repeat center; background-size:contain; background-color:#e8e8e8}
 
+@media (max-width:800px) {
+	body {padding:0 10px;}
+	.gnb {display: none;}
+	header {padding-left: 0; min-width: auto;}
+	header .top_menu .hnb {display: none;}
+	.container {padding-left: 0;}
+	.main_ex .ex li {width:47% !important; float:none; display: inline-block; padding:0; margin: 0 1%;}
+	.container .banner {width:100%;}
+	header .top_menu .profile {display: table-cell;}
+	header .top_menu .search a input[type=image] {left:77%;}
+	header .top_menu .search input[type=search] {position: absolute; display:none; width:160%; top:0; right: -200%; transition: 0.5s; padding-left: 55px; padding-right: 35px;}
+}
 
 /** 메인 체험 영역 **/
 .main_ex {width: 100%; margin: 60px auto;}
@@ -91,17 +106,17 @@ header .top_menu .search a input[type=image] {position:absolute; width:20px; top
 .experience .title {padding: 0 15px 30px 15px;}
 .experience .title .t1 {font-size:23px; margin:0; font-weight:bold;}
 .experience .title .t2 {font-size:15px; color:#a5a5a5; margin:10px 0 0 0;}
-.experience .experience_table {width:100%;}
-.experience .experience_table tbody tr td {padding:0 15px;}
-.experience .experience_table tbody tr td .thubm img {border-radius:10px;}
-.experience .experience_table tbody tr td .info {padding-top:10px;}
-.experience .experience_table tbody tr td .info p {margin:5px 0;}
-.experience .experience_table tbody tr td .info .kind {font-size:16px; font-weight:bold; color:#09b009;}
-.experience .experience_table tbody tr td .info .ex_title {font-size:16px; font-weight:bold;}
-.experience .experience_table tbody tr td .info .ex_service {font-size:14px; color:#6a6a6a;}
-.experience .experience_table tbody tr td .info .ex_preg {width:100%; height:3px; background:#eee;}
-.experience .experience_table tbody tr td .info .ex_preg .ex_preg_rhap {background:#ea7205; height:3px;}
-.experience .experience_table tbody tr td .info .ex_pe {text-align:right; font-size:14px; color:#555; margin-top:10px;}
+.experience .experience_table {width:100%; min-width: 1090px;}
+.experience .experience_table li {padding:0 15px; display: inline-block; width:24%;}
+.experience .experience_table li .thubm img {border-radius:10px;}
+.experience .experience_table li .info {padding-top:10px;}
+.experience .experience_table li .info p {margin:5px 0;}
+.experience .experience_table li .kind {font-size:16px; font-weight:bold; color:#09b009;}
+.experience .experience_table li .info .ex_title {font-size:16px; font-weight:bold;}
+.experience .experience_table li .info .ex_service {font-size:14px; color:#6a6a6a;}
+.experience .experience_table li .info .ex_preg {width:100%; height:3px; background:#eee;}
+.experience .experience_table li .info .ex_preg .ex_preg_rhap {background:#ea7205; height:3px;}
+.experience .experience_table li .info .ex_pe {text-align:right; font-size:14px; color:#555; margin-top:10px;}
 
 .exper_title {width:100%;}
 .exper_title .t1 {font-size:28px; font-weight: bold;}
@@ -125,6 +140,18 @@ header .top_menu .search a input[type=image] {position:absolute; width:20px; top
 .exper_filter .channel_sort ul li.select {border-color:rgb(7, 9, 112);}
 .exper_filter .channel_sort ul li.sort {width:120px;}
 .exper_filter .channel_sort ul li.sort select {border:none;}
+
+@media (max-width:800px) {
+	.experience {width:100%;}
+	.experience .experience_table {min-width: auto;}
+	.experience .experience_table li {width:49%; display: inline-block; padding:15px;}
+	.exper_filter {width:100%; border-bottom: 0; min-width: auto; display: block;}
+	.exper_filter .category, .exper_filter .channel_sort {display: block;}
+	.exper_filter .category .product_kind {white-space: nowrap; overflow-y: hidden; border-bottom:1px solid #ccc;}
+	.exper_filter .channel_sort {padding:10px 0;}
+	.exper_filter .channel_sort ul li {display: none;}
+	.exper_filter .channel_sort ul li.sort {display: inline-block;}
+}
 
 /** 체험단 상세 **/
 .exper_detail {width:100%; margin:auto; min-width: 1090px; position: relative;}
@@ -177,6 +204,28 @@ header .top_menu .search a input[type=image] {position:absolute; width:20px; top
 	border-radius: 15px;
 	text-align: center;
 	cursor: pointer;
+}
+.exper_detail .exper_apply_btn {
+	display: none; 
+	width: 100%; 
+	background: #ED3739; 
+	padding:15px; 
+	font-size: 14px; 
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	color: white;
+	text-align: center;
+}
+
+@media (max-width:800px) {
+	.exper_detail {min-width: auto; }
+	.exper_detail .exper_info_top .title h3 {font-size: 20px; margin-bottom: 10px;}
+	.exper_detail .exper_left {width:100%; min-width: auto; padding:0;}
+	.exper_detail .detail .campain_info .info .t01 {width:25%;}
+	.exper_detail .detail .campain_info .info .t02 {width:75%;}
+	.exper_detail .exper_apply_btn {display: block;}
+	.exper_detail .exper_right {display: none;}
 }
 
 .ex_aply {position: relative; width: 100%; min-width: 1090px; margin:auto;}
@@ -238,6 +287,19 @@ header .top_menu .search a input[type=image] {position:absolute; width:20px; top
     border-radius: 10px;
 }
 
+@media (max-width:800px) {
+	.ex_aply {min-width: auto;}
+	.ex_aply .exper_left {padding:40px 0; min-width: auto; width: 100%;}
+	.ex_aply .exper_left .aply_ul .aply_li {width: 100%; min-width: auto; padding: 20px 0;}
+	.ex_aply .exper_left .aply_ul .aply_li .aply_tit {width:100%; min-width: auto; display: block;}
+	.ex_aply .exper_left .aply_ul .aply_li .aply_cont {width:100%; min-width: auto; display: block; padding:15px 0;}
+	.ex_aply .exper_left .aply_ul .aply_li .aply_cont .aply_inp {width:100%;}
+	.ex_aply .exper_left .aply_ul .aply_li .aply_cont .aply_but button {width: 100%;}
+	.ex_aply .exper_right {position: relative; width: 100%; right:auto; padding-left: 0; border-left: 0;}
+	.ex_aply .exper_right .info_area {width: 100%;}
+	.ex_aply .exper_right .info_area .thubm {display: none;}
+}
+
 /** 하단 **/
 footer {margin:50px 0 100px 0; float:left;}
 footer .container ul {width:100%; margin:auto;}
@@ -251,3 +313,15 @@ footer .contect p {font-size:13px; margin:5px 0;}
 footer .contect_btn_area {width:22%; float:left;}
 footer .contect_btn_area .footer_btn {width:70%; border:1px solid #000; padding:10px;}
 footer .contect_btn_area .footer_btn:last-child { margin-top:10px; }
+
+.m_gbn {display: none; background: #fff; border-top: 1px solid #ccc; position: fixed; bottom: 0; left: 0; width: 100%;}
+.m_gbn ul {display: table; width: 100%; text-align: center;}
+.m_gbn ul li {display: inline-block; width: 25%; padding:15px 0; font-size: 12px;}
+
+@media (max-width:800px) {
+	footer .company_info {width:100%}
+	footer .contect {width:50%;}
+	footer .contect_btn_area {width:50%;}
+	.m_gbn {display: block;}
+	
+}

@@ -4,7 +4,8 @@
 <html>
 <head>
 	<title>Home</title>
-	<link href="${pageContext.request.contextPath }/resources/css/main.css?ver=73" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="${pageContext.request.contextPath }/resources/css/main.css?ver=89" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath }/resources/css/board.css?ver=28" rel="stylesheet" type="text/css">
 	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
 </head>
@@ -41,9 +42,16 @@
 	
 	<header>
 		<div class="top_menu">
+			<div class="profile">
+				ONE4<br>
+				<strong>로그인해주세요</strong>
+			</div>
 			<div class="search">
 				<input type="search" placeholder="검색어를 입력하세요" />
 				<a><input type="image" src="${pageContext.request.contextPath }/resources/img/icon/top_search.png" alt="검색" /> </a>
+				<div class="close">
+					<img src="${pageContext.request.contextPath }/resources/img/icon/close.png" />
+				</div>
 			</div>
 			<div class="hnb">
 				<ul>

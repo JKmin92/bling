@@ -80,7 +80,15 @@
 			</div>
 		</div>
 		
+		<a href="${pageContext.request.contextPath}/experience/apply">
+			<div class="exper_apply_btn">
+				<span>체험신청하기</span>
+			</div>
+		</a>
+	
 	</section>
+
+	
 
 </div>
 
@@ -89,8 +97,6 @@
 	$(window).scroll(function(){
 		var this_scroll = $(document).scrollTop();
 		var target = $('.info_area');
-		
-		console.log(this_scroll);
 		
 		if(this_scroll > 40) {
 			target.addClass('fix');
@@ -109,4 +115,20 @@
 			scrollTop: $('#'+i + '').offset().top - 50
 		}, 300);
 	}
+
+	$(document).ready(function() {
+		let windowOutWidth = window.outerWidth;
+
+		if(windowOutWidth <= 800) {
+			$('.m_gbn').css('display','none');
+		}
+	});
+
+	$(window).resize(function (){
+		let windowOutWidth = window.outerWidth;
+
+		if(windowOutWidth <= 800) {
+			$('.m_gbn').css('display','none');
+		}
+	 });
 </script>

@@ -27,6 +27,16 @@ header {
 
 .man_container {padding-left:240px; margin-top:40px;}
 
+.exper_list .btn {width:100%; text-align: right; padding:30px;}
+.exper_list .btn .add {
+    width:150px; 
+    padding:5px 15px; 
+    border:1px solid #eee;
+    border-radius: 15px; 
+    text-align: center; 
+    font-size: 12px; 
+    display: inline;
+}
 .exper_list .experience_table {width:100%; margin-top:30px;}
 .exper_list .experience_table tbody tr td {padding: 0 15px;}
 .exper_list .experience_table tbody tr td .info {padding-top:10px;}
@@ -95,6 +105,20 @@ header {
 .userList table td li {float:left; padding:0 10px;}
 
 .experApply {width:100%; max-width:1090px;}
+.experApply .title, .experApply .btns {display: inline-block;}
+.experApply .title h3 {display: inline;}
+.experApply .btns {text-align: right; width:900px;}
+.experApply .btns .href_btn {
+    width:150px; 
+    margin:0 15px; 
+    padding:5px 15px; 
+    border-radius: 15px; 
+    color:white; 
+    font-size: 12px; 
+    display: inline;
+}
+.experApply .btns .modify {background: rgb(81 88 205);}
+.experApply .btns .remove {background: #ED3739;}
 .experApply .experInfo .channel {padding:20px 0; border-bottom:1px solid #ccc;}
 .experApply .experInfo .channel ul li {display: none; border: 1px solid #eee; font-size: 12px; padding: 5px;}
 .experApply .experInfo .channel ul li.show {display: inline;}
