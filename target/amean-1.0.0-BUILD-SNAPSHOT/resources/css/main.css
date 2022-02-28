@@ -5,6 +5,14 @@ body {margin: 0;}
 ul {list-style: none; padding:0; margin:0;}
 a {text-decoration: none; color:inherit;}
 
+.m_s {display: none;}
+.w_s {display: block;}
+
+@media (max-width:800px) {
+	.m_s {display: block;}
+	.w_s {display: none;}
+}
+
 
 /** 메인 메뉴 **/
 .gnb {width:200px; height:100%; position: fixed; background: #f5f5f5; padding:30px 20px; z-index: 999;}
@@ -316,12 +324,13 @@ footer .contect_btn_area .footer_btn:last-child { margin-top:10px; }
 
 .m_gbn {display: none; background: #fff; border-top: 1px solid #ccc; position: fixed; bottom: 0; left: 0; width: 100%;}
 .m_gbn ul {display: table; width: 100%; text-align: center;}
-.m_gbn ul li {display: table-cell; width: 25%; padding:15px 0; font-size: 12px;}
+.m_gbn ul li {display: inline-block; width: 25%; padding:15px 0; font-size: 12px;}
 
 @media (max-width:800px) {
 	footer .company_info {width:100%}
 	footer .contect {width:50%;}
 	footer .contect_btn_area {width:50%;}
 	.m_gbn {display: block;}
+	footer .company_info .com_info {font-size: 11px; line-height: 1.5;}
 	
 }

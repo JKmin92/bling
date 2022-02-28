@@ -89,7 +89,7 @@ public class UserController {
 //		User user = (User)req.getSession().getAttribute("user");
 //		req.setAttribute("user", user);
 		
-		return "mypage/experience/applyEx";
+		return "mypage/mypage";
 	}
 	
 //	@RequestMapping(value = "/userEx", method = RequestMethod.POST)
@@ -111,6 +111,16 @@ public class UserController {
 //		return map;
 //		
 //	}
+
+	@RequestMapping("/mypage/applyExperList")
+	public String applyExperList() {
+		return "mypage/experience/applyExperList";
+	}
+
+	@RequestMapping("/mypage/selectExper")
+	public String selectExperList() {
+		return "mypage/experience/selectExper";
+	}
 
 	@RequestMapping("/mypage/userInfo")
 	public String userInfo() {

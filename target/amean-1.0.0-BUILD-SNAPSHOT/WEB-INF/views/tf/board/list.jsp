@@ -38,10 +38,10 @@
 
         <div class="info_btn">
             <div class="half"><a href="${pageContext.request.contextPath }/board/penalty">
-                <div class="btn">리뷰 미작성 시 패널티 안내</div>
+                <div class="btn">리뷰 미작성 시 <br class="m_s"/>패널티 안내</div>
             </a></div>
            <div class="half"> <a href="${pageContext.request.contextPath }/board/useContents">
-                <div class="btn">리뷰 2차 활용 동의 안내</div>
+                <div class="btn">리뷰 2차 활용 <br class="m_s"/>동의 안내</div>
             </a></div>
         </div>
 

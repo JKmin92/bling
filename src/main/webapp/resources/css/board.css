@@ -30,6 +30,20 @@
     border-radius: 10px;
 }
 
+@media (max-width:800px) {
+    .boardList {width:100%;}
+    .boardList .board_list {min-width: auto; margin-top:30px;}
+    .boardList .board_list li.board_cate {display: none;}
+    .boardList .board_list li {position: relative;}
+    .board_list li .bo_li_ca {text-align: center; height: 41px; display: inline-block; font-size: 14px;}
+    .board_list li .bo_li_ca span {padding:0;}
+    .board_list li .bo_li_ti {position: absolute; font-size: 18px; margin-left: 10px; display: inline-block; width: 90%;}
+    .board_list li .bo_li_day {position: absolute; top:25px; font-size: 14px; margin-left: 10px; display: inline-block; width: 90%;}
+    .boardList .info_btn {font-size: 14px;}
+    .boardList .info_btn .half .btn {width: 90%; line-height: 20px;}
+}
+
+
 .boardDetail {width:90%; margin:30px auto; min-height: 300px;}
 .boardDetail .title {display:table; width:100%; min-width: 1090px; background:#f5f5f5; border-top:1px solid #ccc; border-bottom: 1px solid #ccc;}
 .boardDetail .title .t01 {width:10%; display:table-cell; height: 50px; vertical-align: middle;}
@@ -37,10 +51,21 @@
 .boardDetail .title .t03 {width:25%; display:table-cell; height: 50px; vertical-align: middle;}
 .boardDetail .title .t01 span,
 .boardDetail .title .t02 span {border-right:1px solid #ccc; width:90%; display:block; padding:0 15px;}
-.boardDetail .boardContent {width: 100%; padding:30px; margin-top:15px; min-width: 1090px; min-height: 300px; background: #fafafa;}
+.boardDetail .boardContent {width: 100%; padding:30px; margin-top:15px; min-width: 1090px; min-height: 300px; background: #fafafa; line-height: 1.5;}
 
+@media (max-width:800px) {
+    .boardDetail {width: 100%;}
+    .boardDetail .title {min-width: auto; position: relative; padding: 10px 0;}
+    .boardDetail .boardContent {min-width: auto; padding: 10px 0;}
+    .boardDetail .title .t01 {width: 20%; display: inline-block; font-size: 16px; height: auto;}
+    .boardDetail .title .t02 {width: 80%; display: inline-block; font-size: 16px; height: auto;}
+    .boardDetail .title .t02 span {padding-left:0;}
+    .boardDetail .title .t03 {width: 80%; display: inline-block; height: auto; padding: 0 15px; font-size: 14px;}
+    .boardDetail .title .t01 span, .boardDetail .title .t02 span {border-right: 0; width: 100%;}
+}
 
-.penalty .txt {padding:40px 0; line-height: 2; font-size: 16px;}
+.panal_con {width: 950px; margin: 40px auto 0;}
+.penalty .txt {padding:40px 0; line-height: 2; font-size: 16px; word-break: keep-all;}
 .penalty .txt h4 {font-size:28px; margin:0;}
 .penalty .warning .card {display: table; padding:40px 0; border-bottom: 1px solid #ccc;}
 .penalty .warning .card:first-child {border-top: 1px solid #ccc;}
@@ -48,14 +73,21 @@
 .penalty .warning .card .t01 {width:30%; font-size: 18px;}
 .penalty .warning .card .t02 {width:70%; font-size: 16px;}
 
+@media (max-width:800px) {
+    .panal_con {width: 100%;}
+    .penalty .warning .card .t01, .penalty .warning .card .t02 {display: block; word-break: keep-all;}
+    .penalty .warning .card .t01 {width: 100%; font-weight: 500; height: 80px;}
+    .penalty .warning .card .t02 {width: 100%;}
+}
+
 .use_agree .txt {width:100%; line-height: 2; font-size: 16px; text-align: center; min-height: 400px;}
 
 .inqury {width:95%; margin:auto;}
-.inqury .form_table .table_tr {border-bottom: 1px solid #ccc;display: table; width:100%;}
+.inqury .form_table .table_tr {border-bottom: 1px solid #ccc;display: table; width:100%; padding:20px 0;}
 .inqury .form_table .table_tr .table_td {display: table-cell;}
-.inqury .form_table .table_tr .table_td input {width:80%;}
-.inqury .form_table .table_tr .table_td textarea {width: 80%; height: 300px; resize: none;}
-.inqury .form_table .table_tr .table_td:first-child {width:10%; padding:10px; vertical-align:top;}
+.inqury .form_table .table_tr .table_td input {width:80%; padding: 10px;}
+.inqury .form_table .table_tr .table_td textarea {width: 80%; height: 300px; resize: none; padding: 15px;}
+.inqury .form_table .table_tr .table_td:first-child {width:10%; padding:10px; vertical-align:middle; text-align: center;}
 .inqury .form_table .table_tr .table_td:last-child {width:70%; padding:10px;}
 .inqury .form_table .table_tr .table_td_h2 {width:100%;}
 .inqury .form_table .butt {width:100%; padding: 30px; text-align: right;}
@@ -68,6 +100,15 @@
     color: #ED3739;
 }
 
+@media (max-width:800px) {
+    .inqury {width: 100%;}
+    .inqury .form_table .table_tr .table_td:first-child {display: none;}
+    .inqury .form_table .table_tr .table_td {display: block; width:100% !important; padding: 0 !important;}
+    .inqury .form_table .table_tr .table_td input {width:100%;}
+    .inqury .form_table .table_tr .table_td textarea {width:100%;}
+    .inqury .form_table .butt button {width: 100%;}
+    .inqury .form_table .butt {padding:30px 0;}
+}
 
 .faq {width:95%;}
 .faq .list {width:100%; margin:40px 0;}
@@ -91,6 +132,14 @@
 .faq .list ul li .quest:after {transform: rotate(-45deg);} 
 .faq .list ul li .quest.active:before {transform: rotate(-45deg);}
 .faq .list ul li .quest.active:after {transform: rotate(45deg);} 
+
+@media (max-width:800px) {
+    .faq {width: 100%;}
+    .faq .list ul li {font-size: 14px;}
+    .faq .list ul li .quest, .faq .list ul li .anser {font-size: 14px; padding: 0;}
+    .faq .list ul li .quest:after, .faq .list ul li .quest:before {display: none !important;}
+    .faq .list ul li .anser {margin-top:15px;}
+}
 
 
 

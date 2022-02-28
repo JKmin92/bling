@@ -1,10 +1,9 @@
 @charset "UTF-8";
 
-* {box-sizing: border-box;}
-body, html {margin:0; padding:0;}
-ul ,li {list-style:none;}
-.container {padding-left:240px;}
+.container {padding-left:240px; margin-top:0 !important;}
 section {margin:30px auto; width:90%;}
+
+.top_h_30 {height: 30px;}
 
 .gnb {
 	width:200px;
@@ -47,7 +46,7 @@ section {margin:30px auto; width:90%;}
 	height:100%;
 	border:1px solid #000;
 	border-radius:50%;
-	background-size:100%;
+	background-size:cover;
 }
 
 .gnb #profile .img_area .img .modify {
@@ -112,11 +111,18 @@ section {margin:30px auto; width:90%;}
 .gnb .my_category button:before {transform: rotate(-45deg); margin-top: 3px;}
 .gnb .my_category button:after {transform: rotate(45deg); margin-top: 0px;}
 
+@media (max-width:800px) {
+	.gnb {display:none;}
+	.container {padding-left: 0; margin-top:0 !important;}
+	.top_h_30 {height: 0;}
+}
+
 .mysimple {
 	display:table;
 	width:90%;
 	margin:auto;
 	border-bottom:1px solid;
+	min-width: 1090px;
 }
 
 .mysimple .campaign_state {
@@ -145,7 +151,11 @@ section {margin:30px auto; width:90%;}
 
 .mysimple .campaign_state ul .counting .num {
 	font-size:40px;
-	font-weight:bolid;
+	font-weight:bold;
+}
+
+.mysimple .campaign_state ul .counting .subject {
+	font-size: 16px;
 }
 
 .mysimple .channel {
@@ -154,27 +164,28 @@ section {margin:30px auto; width:90%;}
 	background:#f5f5f5;
 }
 
-.mysimple .channel ul {
+.mysimple .channel ul.exper_state {
 	display:table;
 	padding:0;
 	width:100%;
 }
 
-.mysimple .channel ul li {
+.mysimple .channel ul.exper_state li {
 	display:inline-table;
 	padding:30px 0;
 	text-align:center;
 	width:50%;
 }
 
-
-.apply_list .state ul {
+.apply_list {min-width: 1090px;}
+.apply_list .state {display: none;}
+.apply_list .state ul.exper_state {
 	width:100%;
 	display:table;
 	padding:0;
 }
 
-.apply_list .state ul li {
+.apply_list .state ul.exper_state li {
 	display:table-cell;
 	position:relative;
 	width:25%;
@@ -183,28 +194,40 @@ section {margin:30px auto; width:90%;}
 	background:#f5f5f5;
 }
 
-.apply_list .state ul .active {
+.apply_list .state ul.exper_state .active {
 	background:#363636;
 	color:white;
 }
 
-.apply_list .state ul li:before,
-.apply_list .state ul li:after {
-	content: ''; 
-	position: absolute; 
-	height: 14px; 
-	width: 40px; 
-	background: white; 
-	right: -19px; 
-	display: block;
-}
-.apply_list .state ul li:last-child:before,
-.apply_list .state ul li:last-child:after {
-	content:none;
+.apply_list ul.experList, .selectExperList ul {width: 100%;}
+.apply_list ul.experList li,
+.selectExperList ul li {width: 24.5%; display: inline-block; border-right: 1px solid #eee; padding:0 20px; margin-bottom: 30px;}
+.apply_list ul.experList li:nth-child(4n),
+.selectExperList ul li:nth-child(4n) {border-right: 0;}
+.apply_list ul.experList li:last-child,
+.selectExperList ul li:last-child {border-right: 0;}
+.apply_list ul.experList li .thum,
+.selectExperList ul li .thum {width: 100%;}
+.apply_list ul.experList li .exper_info,
+.selectExperList ul li .exper_info {font-size:14px;}
+.apply_list ul.experList li .exper_info div,
+.selectExperList ul li .exper_info div {padding: 5px 0;}
+.apply_list ul.experList li .exper_info .exper_title,
+.selectExperList ul li .exper_info .exper_title {font-size:16px; font-weight: bold;}
+.apply_list ul.experList li .detail_btn,
+.selectExperList ul li .detail_btn {
+	font-size:12px; 
+	border:1px solid #eee; 
+	width: 100%; 
+	padding: 7px; 
+	text-align: center;
+	margin:15px 0;
 }
 
-.apply_list .state ul li:before {transform: rotate(45deg); top:2px;}
-.apply_list .state ul li:after {transform: rotate(-45deg); top:23px;}
+.selectExperList {margin:30px auto; width:90%; min-width: 1090px;}
+.selectExperList ul {width:100%}
+.selectExperList ul.outExper {margin:20px 0;}
+.selectExperList ul li {width: 32.5%; display: inline-block;}
 
 .remove_user, .modify_pwd, .myChannel, .myPoint, .userInfo {
 	width:600px; 
@@ -256,4 +279,58 @@ section {margin:30px auto; width:90%;}
 .userInfo .userInfoGree button {border:0; padding:5px;}
 .userInfo .infoSubmit {width:100%; margin-top:30px; text-align: center;}
 .userinfo .infoSubmit button {border:0; width:30%; padding:10px; font-size:13px; background-color: #ededed;}
+
+.my_profile {width: 100%; display: none; text-align: center; background: #f5f5f5;}
+.my_profile .info {width: 100%; padding:30px 0;}
+.my_profile .info .user {width:100%; padding:10px 0;}
+.my_profile .info .user .name {font-size:16px; font-weight: bold;}
+.my_profile .info .user .mail {font-size:14px;}
+.my_profile .info .thum .img {width:40px; height: 40px; border:1px solid #000; margin:auto; border-radius: 50%;}
+.my_profile .info .channel {padding-bottom:10px;}
+.my_profile .info .channel ul li {display: inline-block; padding:0 5px;}
+.my_profile .info .channel ul li img {width: 24px;}
+.my_profile .info .point {width:100%; }
+.my_profile .info .point span {padding: 0 15px;}
+
+.insert_content {display: none; width: 100%; padding:20px 0; border-bottom: 5px solid #eee;}
+.insert_content .content {position: relative;}
+.insert_content .content span {font-size:16px; font-weight: bold;}
+.insert_content .content span::before {transform: rotate(-45deg); margin-top: 3px;}
+.insert_content .content span:after {    transform: rotate(45deg); margin-top: 0px;}
+.insert_content .content span::before, .insert_content .content span:after {
+	content: '';
+    position: absolute;
+    height: 1px;
+    width: 5px;
+    background: #363636;
+    right: 10px;
+    top: 9px;
+    display: block;
+    margin-left: 5px;
+}
+
+.mybtnList {width: 100%; padding:20px 0; border-bottom: 5px solid #eee; display: none;}
+.mybtnList ul {display: table; width: 100%;}
+.mybtnList ul li {display: table-cell; border-right: 1px solid #eee; text-align: center; width: 33.3%;}
+.mybtnList ul li:last-child {border-right: 0;}
+
+footer .container {padding-left: 0;}
+
+@media(max-width:800px) {
+	.mysimple {margin: auto; width:100%; min-width: auto; padding: 20px 0; border-top:5px solid #eee; border-bottom: 5px solid #eee;}
+	.mysimple .channel {display:none;}
+	.apply_list {display:none; width:100%; min-width: auto;}
+	.my_profile {display: block;}
+	.mysimple .campaign_state h3 {margin-left:0;}
+	.mysimple .campaign_state ul .counting .num {font-size: 25px;}
+	.mysimple .campaign_state ul .counting .subject {font-size:12px;}
+	.my_profile .info .thum .img {width:80px; height:80px;}
+	.insert_content {display: block;}
+	.mybtnList {display: block;}
+	.apply_list .state {display: block;}
+	.apply_list .state ul.exper_state li {font-size: 12px; overflow: scroll;}
+	.apply_list ul.experList li {width:49.4%; padding:0 10px}
+	.apply_list ul.experList li:nth-child(2n) {border-right: 0;}
+	.apply_list ul.experList li:nth-child(3n) {border-right: 1px solid #eee;}
+}
 

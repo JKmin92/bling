@@ -9,60 +9,66 @@ import kr.com.amean.entity.Guide;
 import kr.com.amean.entity.Review;
 
 public interface ExperienceSerivce {
+
+	/**
+	 * í˜„ìž¬ ì‹œê°„
+	 * @return
+	 */
+	String checkThisTime();
 	
 	/**
-	 * ÀüÃ¼ Ã¼Çè ¸®½ºÆ®
-	 * @return Ã¼Çè¸®½ºÆ®
+	 * ï¿½ï¿½Ã¼ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+	 * @return Ã¼ï¿½è¸®ï¿½ï¿½Æ®
 	 */
 	List<Experience> selectExperienceList();
 	
 	/**
-	 * À¯Àú Ã¼Çè ½ÅÃ» ¸®½ºÆ®
+	 * ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½Æ®
 	 * @param id
-	 * @return Ã¼Çè¸®½ºÆ®
+	 * @return Ã¼ï¿½è¸®ï¿½ï¿½Æ®
 	 */
 	List<Experience> selectUserExperienceList(String id);
 	
 	/**
-	 * Æ¯Á¤ Ã¼Çè Á¤º¸
+	 * Æ¯ï¿½ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param e_num
-	 * @return Ã¼Çè
+	 * @return Ã¼ï¿½ï¿½
 	 */
 	Experience selectExperience(int e_num);
 
 	/**
-	 * Ã¼Çè ½ÅÃ»
+	 * Ã¼ï¿½ï¿½ ï¿½ï¿½Ã»
 	 * @param apply
 	 * @param consent
-	 * @return ½ÅÃ»¿©ºÎ
+	 * @return ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½
 	 */
 	boolean apply(Apply apply, Consent consent);
 	
 	/**
-	 * USER Ã¼Çè ½ÅÃ» È®ÀÎ
+	 * USER Ã¼ï¿½ï¿½ ï¿½ï¿½Ã» È®ï¿½ï¿½
 	 * @param id
 	 * @return Apply
 	 */
 	Apply showApply(int e_num, String id);
 	
 	/**
-	 * Ã¼Çè Ãë¼Ò
+	 * Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½
 	 * @param apply
-	 * @return Ãë¼Ò¿©ºÎ
+	 * @return ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½
 	 */
 	boolean concelApply(Apply apply);
 	
 	/**
-	 * Ã¼Çè ÀÛ¼ºº¸°í
+	 * Ã¼ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param review
-	 * @return º¸°í¿©ºÎ
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	boolean experienceReport(Review review);
 	
 	/**
-	 * Ã¼Çè °¡ÀÌµå¶óÀÎ È®ÀÎ
+	 * Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	 * @param e_num
-	 * @return °¡ÀÌµå¶óÀÎ
+	 * @return ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½
 	 */
 	Guide showGuide(int e_num);
 	

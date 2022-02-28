@@ -48,12 +48,12 @@
 		<jsp-property-group>
 			<url-pattern>/WEB-INF/views/ntf/*</url-pattern>
 			<include-prelude>/WEB-INF/common/ntfheader.jspf</include-prelude>
-			<include-coda>/WEB-INF/common/ntffooter.jspf</include-coda>
+			<include-coda>/WEB-INF/common/tffooter.jspf</include-coda>
 		</jsp-property-group>
 		<jsp-property-group>
 			<url-pattern>/WEB-INF/views/mypage/*</url-pattern>
 			<include-prelude>/WEB-INF/common/myheader.jspf</include-prelude>
-			<include-coda>/WEB-INF/common/myfooter.jspf</include-coda>
+			<include-coda>/WEB-INF/common/tffooter.jspf</include-coda>
 		</jsp-property-group>
 	</jsp-config>
 	

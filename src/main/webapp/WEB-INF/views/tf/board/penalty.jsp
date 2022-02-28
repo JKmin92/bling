@@ -2,12 +2,12 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<div class="container" style="width:950px; margin:40px auto 0;">
+<div class="container panal_con">
     <section class="penalty">
         <div class="txt">
             <h4>리뷰 작성은 블링과의 약속입니다.</h4>
-            캠페인 신청서는 하나의 약식 계약으로<br>
-            제품 및 서비스를 제공받은 후 리뷰 작성 불이행 시 패널티 및 법적 조치를 취할 수 있으니<br>
+            캠페인 신청서는 하나의 약식 계약으로<br class="w_s">
+            제품 및 서비스를 제공받은 후 리뷰 작성 불이행 시 패널티 및 법적 조치를 취할 수 있으니<br class="w_s">
             이 점 꼭 유의하셔서 즐거운 리뷰어 라이프가 되시리 바랍니다.
         </div>
         <div class="warning">
