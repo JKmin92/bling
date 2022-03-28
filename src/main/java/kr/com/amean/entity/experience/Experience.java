@@ -1,75 +1,62 @@
-package kr.com.amean.entity;
+package kr.com.amean.entity.experience;
 
 import java.util.Date;
 
+/**
+ * ì²´í—˜ ì •ë³´
+ */
 public class Experience {
 	
 	private int e_num;
 	private String title;
 	private String subject;
-	/**
-	 * Á¦°ø¼­ºñ½º
-	 */
 	private String service;
 	private String main_img;
-	/**
-	 * Ä«Å×°í¸®
-	 */
-	private String category;
-	/**
-	 * Áö¿ª
-	 */
+	private String mCategory;
+	private String sCategory;
 	private String area;
-	/**
-	 * ºí·Î±×Ã¼Çè´Ü ÇüÅÂ
-	 * 0=Á¦Ç°Çü
-	 * 1=¹æ¹®Çü
-	 * 2=±âÀÚ´Ü
-	 */
-	private int kind_n;
-	/**
-	 * ÀÎ½ºÅ¸±×·¥ Ã¼Çè´Ü ÇüÅÂ
-	 * 0=Á¦Ç°Çü
-	 * 1=¹æ¹®Çü
-	 * 2=±âÀÚ´Ü
-	 */
-	private int kind_i;
-	/**
-	 * ½º¸¶Æ®½ºÅä¾î ¸®ºä ÇüÅÂ
-	 * ture=Æ÷Åä¸®ºä
-	 * false=ÀÏ¹İ¸®ºä
-	 * null=¸®ºäÀÛ¼º¾ÈÇÔ
-	 */
+	private boolean kind_n;
+	private boolean kind_i;
 	private boolean kind_s;
-	/**
-	 * È¨ÆäÀÌÁö ¸®ºä ÇüÅÂ
-	 * ture=È¨ÆäÀÌÁö ¸®ºä ÀÛ¼º
-	 * null=È¨ÆäÀÌÁö ¸®ºä ÀÛ¼º ¾ÈÇÔ
-	 */
 	private boolean kind_h;
 	/**
-	 * ¸ğÁıÀÎ¿ø
+	 * ëª¨ì§‘ì¸ì›
 	 */
 	private int head_count;
-	/**
-	 * ¼­ºñ½º³»¿ë
-	 */
 	private String content;
-	/**
-	 * ¸ğÁıÁ¶°Ç
-	 */
 	private String condition;
 	private Date start_date;
 	private Date end_date;
 	
-	public Experience(int e_num, String title, String subject, String service, String main_img, String category, String area, int kind_n,
-			int kind_i, boolean kind_s, boolean kind_h, int head_count, String content, String condition,
+	public Experience(int e_num, String title, String subject, String service, String main_img, String mCategory, String sCategory, 
+	String area, boolean kind_n, boolean kind_i, boolean kind_s, boolean kind_h, int head_count, String content, String condition,
 			Date start_date, Date end_date) {
 		this.e_num = e_num;
 		this.title = title;
 		this.subject = subject;
 		this.service = service;
-		this.category = category;
+		this.mCategory = mCategory;
+		this.sCategory = sCategory;
+		this.area = area;
+		this.kind_n = kind_n;
+		this.kind_i = kind_i;
+		this.kind_s = kind_s;
+		this.kind_h = kind_h;
+		this.head_count = head_count;
+		this.content = content;
+		this.condition = condition;
+		this.start_date = start_date;
+		this.end_date = end_date;
+	}
+
+	public Experience(String title, String subject, String service, String main_img, String mCategory, String sCategory, 
+	String area, boolean kind_n, boolean kind_i, boolean kind_s, boolean kind_h, int head_count, String content, String condition,
+			Date start_date, Date end_date) {
+		this.title = title;
+		this.subject = subject;
+		this.service = service;
+		this.mCategory = mCategory;
+		this.sCategory = sCategory;
 		this.area = area;
 		this.kind_n = kind_n;
 		this.kind_i = kind_i;
@@ -124,12 +111,20 @@ public class Experience {
 		this.main_img = main_img;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getMCategory() {
+		return this.mCategory;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setMCategory(String mCategory) {
+		this.mCategory = mCategory;
+	}
+
+	public String getSCategory() {
+		return this.sCategory;
+	}
+
+	public void setSCategory(String sCategory) {
+		this.sCategory = sCategory;
 	}
 
 	public String getArea() {
@@ -140,19 +135,19 @@ public class Experience {
 		this.area = area;
 	}
 
-	public int getKind_n() {
+	public boolean getKind_n() {
 		return kind_n;
 	}
 
-	public void setKind_n(int kind_n) {
+	public void setKind_n(boolean kind_n) {
 		this.kind_n = kind_n;
 	}
 
-	public int getKind_i() {
+	public boolean getKind_i() {
 		return kind_i;
 	}
 
-	public void setKind_i(int kind_i) {
+	public void setKind_i(boolean kind_i) {
 		this.kind_i = kind_i;
 	}
 

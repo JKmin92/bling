@@ -1,29 +1,20 @@
-package kr.com.amean.entity;
+package kr.com.amean.entity.experience;
 
 import java.util.Date;
 
+/**
+ * Ï≤¥Ìóò Ïã†Ï≤≠
+ */
 public class Apply {
 	
 	private int a_num;
 	private String id;
 	private int e_num;
 	private Date date;
-	/**
-	 * √º«Ë º±¡§ ø©∫Œ
-	 * null=πÃπﬂ«•
-	 * true=√º«Ëº±¡§
-	 * false=º±¡§æ»µ 
-	 */
 	private boolean state;
 	private String comment;
 	private String cancel_reason;
 	private Date cancel_date;
-	/**
-	 * √Îº“ªÛ≈¬
-	 * null=√Îº“æ»«‘
-	 * false=√Îº“Ω≈√ª
-	 * true=√Îº“Ω¬¿Œ
-	 */
 	private boolean cancel_state;
 
 	public Apply(int a_num, String id, int e_num, Date date, boolean state, String comment, String cancel_reason, Date cancel_date,

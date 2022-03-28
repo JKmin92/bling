@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
-import kr.com.amean.entity.Experience;
+import kr.com.amean.entity.experience.Experience;
 import kr.com.amean.provider.ExperienceProvider;
 import kr.com.amean.provider.factory.SqlsessionFactoryProvider;
 
@@ -17,69 +17,46 @@ public class ExperienceProviderLogic implements ExperienceProvider {
         factory = SqlsessionFactoryProvider.getSqlsessionFactory();
     }
 
-    /**
-     * code - 1=select, 2=insert, 3=update, 4=delete, 5=selectList
-     * @param code
-     * @param name
-     * @return
-     */
-    public Object sessionDateResult(int code, String name, Object data) {
+    
 
+    @Override
+    public String checkThisTime() {
+        return null;
+    }
+
+    @Override
+    public Experience insertExperience(Experience experience) {
         SqlSession session = factory.openSession();
-        Object result = null;
+        int result = 0;
         try {
-            if(code == 1) {
-                if(data == null) {
-                    result = session.selectOne(name);
-                } else {
-                    result = session.selectOne(name, data);
-                }
-            } else if (code == 2) {
+            result = session.insert("addExperience", experience);
+            
 
-                int res = session.insert(name, data);
-                if(res != 0) result = true;
-                else result=false;
+            if(result != 0) session.commit();
+            else session.rollback();
 
-            } else if (code == 3) {
-                
-                int res = session.update(name, data);
-                if(res != 0) result = true;
-                else result=false;
-
-            } else if (code == 4) {
-
-                int res = session.delete(name, data);
-                if(res != 0) result = true;
-                else result=false;
-
-            } else if (code == 5) {
-                if(data == null) {
-                    result = session.selectList(name);
-                } else {
-                    result = session.selectList(name, data);
-                }
-            }
-
-            if (result != null){
-                session.commit();
-            }
-            else {session.rollback();}
-            return result;
-
+            return experience;
         } finally {
             session.close();
         }
     }
 
-    @Override
-    public String checkThisTime() {
-        String thisTime = (String)sessionDateResult(1,"checkthisTime",null);
-        return thisTime;
-    }
+
 
     @Override
-    public Boolean insertExperience(Experience experience) {
-        return (Boolean)sessionDateResult(2, "insertExperience", experience);
+    public int getExperienceNum() {
+        SqlSession session = factory.openSession();
+        int result = 0;
+        try {
+            result = session.selectOne("getExpericenNum");
+        
+            if(result != 0) session.commit();
+            else session.rollback();
+
+            return result;
+        } finally {
+            session.close();
+        }
     }
     
 }

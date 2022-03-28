@@ -1,11 +1,13 @@
 package kr.com.amean.service;
 
-import kr.com.amean.entity.User;
+import kr.com.amean.entity.user.Area;
+import kr.com.amean.entity.user.Interest;
+import kr.com.amean.entity.user.User;
 
 public interface UserService {
 	
 	/**
-	 * ·Î±×ÀÎ
+	 * ï¿½Î±ï¿½ï¿½ï¿½
 	 * @param id
 	 * @param pw
 	 * @return User
@@ -13,46 +15,50 @@ public interface UserService {
 	User login(String id, String pw);
 	
 	/**
-	 * id È®ÀÎ
+	 * id È®ï¿½ï¿½
 	 * @param id
-	 * @return ¿©ºÎ È®ÀÎ
+	 * @return ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	 */
 	boolean idCheck(String id);
 	
 	/**
-	 * È¸¿ø°¡ÀÔ
+	 * È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param user
-	 * @return °¡ÀÔ¿©ºÎ
+	 * @return ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½
 	 */
 	boolean join(User user);
+
+	boolean addArea(Area area);
+
+	boolean addInterest(Interest interest);
 	
 	/**
-	 * È¸¿øÁ¤º¸¼öÁ¤
+	 * È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param user
-	 * @return ¼öÁ¤¿©ºÎ
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	boolean updateUserInfo(User user);
 	
 	/**
-	 * ºñ¹Ð¹øÈ£ º¯°æ
+	 * ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½
 	 * @param id
 	 * @param PW
-	 * @return ¼öÁ¤¿©ºÎ
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	boolean updatePW(String id, String PW);
 	
 	/**
-	 * ¾ÆÀÌµð Ã£±â
+	 * ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½
 	 * @param name
 	 * @param phone_number
-	 * @return ¾ÆÀÌµð
+	 * @return ï¿½ï¿½ï¿½Ìµï¿½
 	 */
 	String selectID(String name, String phone_number);
 	
 	/**
-	 * È¸¿øÅ»Åð
+	 * È¸ï¿½ï¿½Å»ï¿½ï¿½
 	 * @param user
-	 * @return Å»Åð¿©ºÎ
+	 * @return Å»ï¿½ð¿©ºï¿½
 	 */
 	boolean removeUser(User user);
 

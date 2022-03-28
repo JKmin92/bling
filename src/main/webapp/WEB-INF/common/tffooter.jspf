@@ -36,5 +36,14 @@
 	</div>
 	
 	<script src="${pageContext.request.contextPath }/resources/js/script.js?ver=16"></script>
+	<script>
+		$(document).ready(function() {
+			let pathname = $(location).attr('pathname');
+			if (pathname.indexOf('join') >= 0 || pathname.indexOf('login') >= 0) {
+				$('footer').css('display','none');
+				$('.m_gbn').css('display','none');
+			}
+		});
+	</script>
 </body>
 </html>

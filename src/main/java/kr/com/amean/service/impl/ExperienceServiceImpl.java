@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.com.amean.entity.Apply;
 import kr.com.amean.entity.Consent;
-import kr.com.amean.entity.Experience;
-import kr.com.amean.entity.Guide;
-import kr.com.amean.entity.Review;
+import kr.com.amean.entity.experience.Guide;
+import kr.com.amean.entity.experience.Apply;
+import kr.com.amean.entity.experience.Experience;
+import kr.com.amean.entity.experience.Review;
 import kr.com.amean.provider.ExperienceProvider;
 import kr.com.amean.service.ExperienceSerivce;
 
@@ -70,6 +70,17 @@ public class ExperienceServiceImpl implements ExperienceSerivce {
     public Guide showGuide(int e_num) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public Experience addExperience(Experience experience) {
+        return experienceProvider.insertExperience(experience);
+    }
+
+    @Override
+    public int getExperienceNum() {
+        // TODO Auto-generated method stub
+        return 0;
     }
     
 }

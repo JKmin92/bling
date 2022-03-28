@@ -1,7 +1,10 @@
-package kr.com.amean.entity;
+package kr.com.amean.entity.experience;
 
 import java.util.Date;
 
+/**
+ * ë¦¬ë·°
+ */
 public class Review {
 	
 	private int r_num;
@@ -11,21 +14,31 @@ public class Review {
 	private Date wirte_date;
 	private String url;
 	/**
-	 * ¸®ºäÄ¸Ã³º»
+	 * ï¿½ï¿½ï¿½ï¿½Ä¸Ã³ï¿½ï¿½
 	 */
 	private String img;
 	/**
-	 * ¸®ºäÀÛ¼º È®ÀÎ
-	 * 0=ÀÛ¼ºÀü
-	 * 1=°ËÅäÁß
-	 * 2=¼öÁ¤ÇÊ¿ä
-	 * 3=º¸¾È
-	 * 4=¿Ï·á
+	 * ì‘ì„±ìƒíƒœ
+	 * 0=ë¯¸ì‘ì„±
+	 * 1=ì‘ì„±
+	 * 2=ìˆ˜ì •
+	 * 3=ì™„ë£Œ
+	 * 4=ï¿½Ï·ï¿½
 	 */
 	private int state;
 	
 	public Review(int r_num, int a_num, String id, int e_num, Date wirte_date, String url, String img, int state) {
 		this.r_num = r_num;
+		this.a_num = a_num;
+		this.id = id;
+		this.e_num = e_num;
+		this.wirte_date = wirte_date;
+		this.url = url;
+		this.img = img;
+		this.state = state;
+	}
+
+	public Review(int a_num, String id, int e_num, Date wirte_date, String url, String img, int state) {
 		this.a_num = a_num;
 		this.id = id;
 		this.e_num = e_num;

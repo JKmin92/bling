@@ -9,12 +9,12 @@
         <div class="tr">
             <div class="tit">카테고리</div>
             <div class="con">
-                <select>
+                <select class="mCategory">
                     <option>방문</option>
                     <option>제품</option>
                     <option>기자단</option>
                 </select>
-                <select>
+                <select class="sCategory">
                     <option>뷰티</option>
                     <option>식품/생활</option>
                     <option>육아</option>
@@ -27,7 +27,7 @@
             <div class="tit">제목</div>
             <div class="con">
                 <div class="in_bor">
-                    <input type="text">
+                    <input type="text" name="title">
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="tit">부제</div>
             <div class="con">
                 <div class="in_bor">
-                    <input type="text">
+                    <input type="text" name="subject">
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
             <div class="tit">메인 이미지</div>
             <div class="con">
                 <div class="in_bor">
-                    <input type="file">
+                    <input type="file" name="main_img">
                 </div>
             </div>
         </div>
@@ -92,12 +92,12 @@
             <div class="con">
                 <div class="main keyword">
                     메인 키워드 <div class="in_bor">
-                        <input type="text" placeholder=",으로 구분">
+                        <input type="text" placeholder=",으로 구분" name="keyword">
                     </div>
                 </div>
                 <div class="sub keyword" style="padding-top:40px;">
                     서브 키워드 <div class="in_bor">
-                        <input type="text" placeholder="미작성 시 노출안됨">
+                        <input type="text" placeholder="미작성 시 노출안됨" name="sKeyword">
                     </div>
                 </div>
             </div>
@@ -130,9 +130,31 @@
         
 
         <div class="btn">
-            <button type="submit">등록</button>
-            <button>취소</button>
+            <button type="submit" id="submit">등록</button>
+            <div class="cancel">취소</div>
         </div>
     </section>
-
 </div>
+
+<script>
+
+    $('.channel li').click(function () {
+        let hasActive = $(this).hasClass('active');
+        if(hasActive) {
+            $(this).removeClass('active');
+        } else {
+            $(this).addClass('active');
+        }
+    });
+
+    $('#submit').click(function() {
+
+        let
+
+        $.ajax({
+            url : '${pageContext.request.contextPath}/experience/insertExperience',
+
+        });
+    });
+
+</script>

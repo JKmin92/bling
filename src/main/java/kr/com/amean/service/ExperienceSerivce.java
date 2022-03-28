@@ -2,11 +2,11 @@ package kr.com.amean.service;
 
 import java.util.List;
 
-import kr.com.amean.entity.Apply;
 import kr.com.amean.entity.Consent;
-import kr.com.amean.entity.Experience;
-import kr.com.amean.entity.Guide;
-import kr.com.amean.entity.Review;
+import kr.com.amean.entity.experience.Guide;
+import kr.com.amean.entity.experience.Apply;
+import kr.com.amean.entity.experience.Experience;
+import kr.com.amean.entity.experience.Review;
 
 public interface ExperienceSerivce {
 
@@ -15,6 +15,10 @@ public interface ExperienceSerivce {
 	 * @return
 	 */
 	String checkThisTime();
+
+	Experience addExperience(Experience experience);
+
+	int getExperienceNum();
 	
 	/**
 	 * ��ü ü�� ����Ʈ

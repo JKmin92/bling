@@ -1,11 +1,13 @@
 package kr.com.amean.provider;
 
-import kr.com.amean.entity.Experience;
+import kr.com.amean.entity.experience.Experience;
 
 public interface ExperienceProvider {
 
     String checkThisTime();
 
-    Boolean insertExperience(Experience experience);
+    Experience insertExperience(Experience experience);
+
+    int getExperienceNum();
     
 }

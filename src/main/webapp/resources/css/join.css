@@ -68,7 +68,8 @@ a {text-decoration: none; color:inherit;}
 .join_2 h3, .join_2 p, .join_3 p {text-align:center;}
 .join_2 p {font-size:14px;}
 .join_2 ul {float:left; width:100%; text-align:center;}
-.join_2 ul li {float:left; padding:10px; width:15.5%; min-width:69px; margin:6px 10px; height:50px; line-height:50px; font-size:12px; border:1px solid #212121; border-radius:5px;}
+.join_2 ul li {float:left; cursor: pointer; padding:10px; width:15.5%; min-width:69px; margin:6px 10px; height:50px; line-height:1; font-size:12px; border:1px solid #ccc; border-radius:5px;}
+.join_2 ul li.select {background:#d3e3f7;}
 .join_2 .location {margin:30px 0; float:left; width:100%;}
 .join_2 .location .select_locate {padding:5px 0;}
 .join_2 .location .select_locate select {width:40%; height:30px;}
@@ -76,3 +77,9 @@ a {text-decoration: none; color:inherit;}
 .join_2 .location .select_locate button {width:30px; height:30px; margin-left:15px; background:#ffd700; border:none;}
 
 .join_3 ul li {float:left; width:100px; height:100px; line-height:100px; background:#f3d4d4; margin:25px; text-align:center;}
+
+
+.join_4 .logo {text-align: center;}
+.join_4 p {font-size: 14px;}
+.join_4 h5 {font-size: 18px;}
+.join_4 button {font-size: 12px; border: none; background: #909090; cursor: pointer; padding: 10px; margin-top: 20px; width: 45.5%; display: inline-block; color: white;}

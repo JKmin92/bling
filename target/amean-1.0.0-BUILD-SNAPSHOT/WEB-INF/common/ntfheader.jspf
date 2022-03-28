@@ -5,8 +5,8 @@
 <head>
 	<title>Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="${pageContext.request.contextPath }/resources/css/join.css?ver=23" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath }/resources/css/manage.css?ver=21" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath }/resources/css/join.css?ver=27" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath }/resources/css/manage.css?ver=24" rel="stylesheet" type="text/css">
 	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>

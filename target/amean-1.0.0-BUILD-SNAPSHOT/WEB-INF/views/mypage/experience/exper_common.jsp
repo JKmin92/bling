@@ -20,15 +20,19 @@
                 </li>
             </a>
             <li class="next">></li>
-            <li class="counting">
-                <div class="num">3</div>
-                <div class="subject">미등록 컨텐츠</div>
-            </li>
+            <a href="${pageContext.request.contextPath}/user/mypage/insertExper">
+                <li class="counting">
+                    <div class="num">3</div>
+                    <div class="subject">미등록 컨텐츠</div>
+                </li>
+            </a>
             <li class="next">></li>
-            <li class="counting">
-                <div class="num">3</div>
-                <div class="subject">등록한 컨텐츠</div>
-            </li>
+            <a href="${pageContext.request.contextPath}/user/mypage/registerReview">
+                <li class="counting">
+                    <div class="num">3</div>
+                    <div class="subject">등록한 컨텐츠</div>
+                </li>
+            </a>
         </ul>
     </div>
     

@@ -73,6 +73,7 @@ header {
 .man_container .tr .tit {width:150px; vertical-align: middle;}
 .man_container .tr .con {width:80%;}
 .man_container .tr .con.channel ul li {display: inline; padding:5px; border: 1px solid #eee; font-size:12px;}
+.man_container .tr .con.channel ul li.active {background: rgb(167, 167, 167); color:white; border:none;}
 
 .add_exper {width:1090px; max-width:100%;}
 .add_exper input, .add_exper textarea {border:none; width:100%;}
@@ -87,7 +88,7 @@ header {
 }
 .add_exper .date .in_bor, .add_exper .keyword .in_bor  {width:auto; display: inline; margin-left: 15px;}
 .add_exper .btn {width:100%; text-align: right;}
-.add_exper .btn button {
+.add_exper .btn button, .add_exper .btn .cancel {
     width:150px; 
     text-align: center; 
     border-radius: 15px; 

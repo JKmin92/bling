@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.com.amean.provider.mapper.UserMapper">
+    <insert id="userJoin" parameterType="User">
+        insert into userTB (id, password, nickName, phone_number, gender, n_id, i_id, sAgr, eAgr, serviceAgr, privatAgr)
+        values (#{id}, #{pw}, #{nickName}, #{phone_number}, #{gender}, #{n_id}, #{i_id}, #{sAgr}, #{eAgr}, #{serviceAgr}, #{privatAgr})
+    </insert>
+
+    <insert id="addArea" parameterType="Area">
+        insert into areaTB(id, mLocate, sLocate)
+        values (#{id}, #{mLocate}, #{sLocate})
+    </insert>
+
+    <insert id="addInterest" parameterType="Interest">
+        insert into interestTB (id, first, seconde, third)
+        values (#{id}, #{first}, #{seconde}, #{third})
+    </insert>
+
+    <select id="login" parameterType="String" resultType="User">
+        select *
+        from userTB
+        where id = #{id}
+    </select>
+</mapper>
