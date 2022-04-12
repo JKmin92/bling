@@ -3,12 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.com.amean.provider.mapper.ExperienceMapper" useGeneratedKeys="true" getGeneratedKeys="eNum">
-    <insert id="addExperience" parameterType="Experience">
+<mapper namespace="kr.com.amean.provider.mapper.ExperienceMapper">
+    <insert id="addExperience" parameterType="Experience" useGeneratedKeys="true" keyProperty="e_num">
       insert into experienceTB(title, subject, service, main_img, mCategory, sCategory, area, kindN, kindI, kindS, kindH,
-      headCount, missionm condi, startDate, endDate)
+      kindR, headCount, content, contentImage, startDate, endDate, desDate)
       values (#{title}, #{subject}, #{service}, #{main_img}, #{mCategory}, #{sCategory}, #{area}, #{kind_n}, #{kind_i}, #{kind_s}, 
-      #{kind_h}, #{head_count}, #{content}, #{condition}, #{start_date}, #{end_date})
+      #{kind_h}, #{kind_r}, #{head_count}, #{content}, #{contentImage}, #{start_date}, #{end_date}, #{des_date})
     </insert>
+
+    <update id="experImage" parameterType="hashMap">
+      update experienceTB
+      set main_img = #{mainImage}
+      where eNum = #{eNum}
+    </update>
+
+    <insert id="insertGuide" parameterType="Guide">
+      insert into guideTb(eNum, id, guideName, name, keyword, subKeyword, visitInfo, mission, caution, teg, locate,
+      homepage, site2, site3, closeDate)
+      values (#{eNum}, #{id}, #{guideName}, #{service}, #{keyword}, #{subKeyword}, #{visitInfo}, #{mission}, #{caution}, 
+      #{teg}, #{locate}, #{homepage}, #{site2}, #{site3}, #{closeDate})
+    </insert>
+
+    <select id="selectExper" parameterType="Integer" resultType="Experience">
+      select *
+      from experienceTB
+      where eNum = #{e_num}
+    </select>
 
 </mapper>

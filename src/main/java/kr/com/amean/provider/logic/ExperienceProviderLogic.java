@@ -1,10 +1,13 @@
 package kr.com.amean.provider.logic;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
 import kr.com.amean.entity.experience.Experience;
+import kr.com.amean.entity.experience.Guide;
 import kr.com.amean.provider.ExperienceProvider;
 import kr.com.amean.provider.factory.SqlsessionFactoryProvider;
 
@@ -25,17 +28,34 @@ public class ExperienceProviderLogic implements ExperienceProvider {
     }
 
     @Override
-    public Experience insertExperience(Experience experience) {
+    public int insertExperience(Experience experience) {
         SqlSession session = factory.openSession();
         int result = 0;
         try {
             result = session.insert("addExperience", experience);
-            
-
-            if(result != 0) session.commit();
+            if(result != 0) {
+                session.commit();
+                result = experience.getE_num();
+            }
             else session.rollback();
 
-            return experience;
+            return result;
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public Experience selectExperience(int e_num) {
+        SqlSession session = factory.openSession();
+        Experience result = null;
+
+        try {
+            result = session.selectOne("selectExper",e_num);
+            if(result != null) session.commit();
+            else session.rollback();
+
+            return result;
         } finally {
             session.close();
         }
@@ -44,12 +64,32 @@ public class ExperienceProviderLogic implements ExperienceProvider {
 
 
     @Override
-    public int getExperienceNum() {
+    public int insertExperGuide(Guide guide) {
+       SqlSession session = factory.openSession();
+       int result = 0;
+
+       try {
+           result = session.insert("insertGuide", guide);
+           if(result != 0) session.commit();
+           else session.rollback();
+
+           return result;
+       } finally {
+           session.close();
+       }
+    }
+
+
+
+    @Override
+    public int updateExperImage(String mainImage, int eNum) {
         SqlSession session = factory.openSession();
         int result = 0;
+        HashMap<String, Object> insertData = new HashMap<String,Object>();
+        insertData.put("mainImage", mainImage);
+        insertData.put("eNum", eNum);
         try {
-            result = session.selectOne("getExpericenNum");
-        
+            result = session.update("experImage", insertData);
             if(result != 0) session.commit();
             else session.rollback();
 

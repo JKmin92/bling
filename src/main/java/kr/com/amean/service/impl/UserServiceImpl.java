@@ -1,8 +1,11 @@
 package kr.com.amean.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.com.amean.entity.user.Address;
 import kr.com.amean.entity.user.Area;
 import kr.com.amean.entity.user.Interest;
 import kr.com.amean.entity.user.User;
@@ -22,8 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean idCheck(String id) {
-        // TODO Auto-generated method stub
-        return false;
+        return userProvider.idCheck(id);
     }
 
     @Override
@@ -63,6 +65,36 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean addInterest(Interest interest) {
         return userProvider.insertInterest(interest);
+    }
+
+    @Override
+    public boolean addNaverId(String nId, String userId) {
+        return userProvider.addNaverId(nId, userId);
+    }
+
+    @Override
+    public List<Address> userAddressList(String id) {
+        return userProvider.userAddressList(id);
+    }
+
+    @Override
+    public Address userAddress(String id, int aNum) {
+        return userProvider.userAddress(id, aNum);
+    }
+
+    @Override
+    public boolean insertAddress(Address address) {
+        return userProvider.insertAddress(address);
+    }
+
+    @Override
+    public boolean updateAddress(Address address) {
+        return userProvider.updateAddress(address);
+    }
+
+    @Override
+    public boolean removeAddress(String id, int aNum) {
+        return userProvider.removeAddress(id, aNum);
     }
     
 }

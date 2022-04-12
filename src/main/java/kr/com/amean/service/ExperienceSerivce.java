@@ -16,9 +16,11 @@ public interface ExperienceSerivce {
 	 */
 	String checkThisTime();
 
-	Experience addExperience(Experience experience);
+	int addExperience(Experience experience);
 
-	int getExperienceNum();
+	int addGuide(Guide guide);
+
+	int updateExperImage(String mainImage, int eNum);
 	
 	/**
 	 * ��ü ü�� ����Ʈ

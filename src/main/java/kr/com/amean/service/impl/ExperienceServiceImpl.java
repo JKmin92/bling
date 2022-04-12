@@ -38,8 +38,7 @@ public class ExperienceServiceImpl implements ExperienceSerivce {
 
     @Override
     public Experience selectExperience(int e_num) {
-        // TODO Auto-generated method stub
-        return null;
+       return experienceProvider.selectExperience(e_num);
     }
 
     @Override
@@ -73,14 +72,18 @@ public class ExperienceServiceImpl implements ExperienceSerivce {
     }
 
     @Override
-    public Experience addExperience(Experience experience) {
+    public int addExperience(Experience experience) {
         return experienceProvider.insertExperience(experience);
     }
 
     @Override
-    public int getExperienceNum() {
-        // TODO Auto-generated method stub
-        return 0;
+    public int addGuide(Guide guide) {
+       return experienceProvider.insertExperGuide(guide);
+    }
+
+    @Override
+    public int updateExperImage(String mainImage, int eNum) {
+        return experienceProvider.updateExperImage(mainImage, eNum);
     }
     
 }

@@ -10,12 +10,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.com.amean.entity.user.Address;
 import kr.com.amean.entity.user.Area;
 import kr.com.amean.entity.user.Interest;
 import kr.com.amean.entity.user.User;
@@ -33,73 +35,84 @@ public class UserController {
 	@RequestMapping("/loginView")
 	public String loginView(HttpServletRequest req) {
 		
-//		User user = (User)req.getSession().getAttribute("user");
-//		if(user==null) {
-//			return "rediect:/";
-//		}
+		if(req.getSession().getAttribute("user")==null) {
+			return "rediect:/";
+		}
 		
 		return "ntf/login";
 	}
 	
-//	@RequestMapping("/login")
-//	public String login(String id, String pw, HttpServletRequest req) {
-//		
-//		User user = userService.login(id, pw);
-//		if(user==null) {
-//			req.setAttribute("result", false);
-//			return "/login";
-//		}
-//		
-//		HttpSession session = req.getSession();
-//		session.setAttribute("user", user);
-//		
-//		return "redirect:/";
-//	}
 	
 	@RequestMapping("/login")
-	public String login() {
+	public String login(HttpServletRequest req) {
+		if(req.getSession().getAttribute("user") != null) {
+			return "redirect:/";
+		}
 		return "ntf/join/login";
 	}
 
+	@RequestMapping("/loginout")
+	public String logout(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		User user = (User)session.getAttribute("user");
+
+		if(user != null) {
+			session.invalidate();
+		}
+
+		return "redirect:/";
+	}
+
 	@RequestMapping(value="/login/go", method=RequestMethod.POST)
-	public ModelAndView loginGo(@RequestParam("email") String id, String password, HttpServletRequest req) {
+	@ResponseBody
+	public HashMap<String, Boolean> loginGo(String id, String password, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		User user = userService.login(id, password);
-		ModelAndView result = new ModelAndView("/user/mypage");
+		HashMap<String, Boolean> result = new HashMap<String,Boolean>();
+
 		if(user != null) {
 			session.setAttribute("user", user);
-
-			System.out.println("user ID : " + user.getId());
+			result.put("data", true);
 		} else {
-			System.out.println("없음");
+			System.out.println("로그인 실패 : 회원정보 없음 또는 비밀번호 틀림");
+			result.put("data", false);
 		}
 
 		return result;
 	}
 
 	@RequestMapping("/joinView")
-	public String joinView() {
+	public String joinView(HttpServletRequest req) {
+		if(req.getSession().getAttribute("user") != null) {
+			return "redirect:/";
+		}
 		return "ntf/join/first";
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "joinFrist", method = RequestMethod.POST)
-	public String joinFirst (@RequestParam("email") String id, String nickName, String password, String phone, 
-	boolean service, boolean privat, boolean sAgr, boolean eAgr, HttpServletRequest req) {
-		User user = new User();
-		user.setId(id);
-		user.setNickName(nickName);
-		user.setPw(password);
-		user.setPhone_number(phone);
-		user.setSAgr(sAgr);
-		user.setEAgr(eAgr);
-		user.setServiceAgr(service);
-		user.setPrivatAgr(privat);
+	public HashMap<String, Boolean> joinFirst (User user, HttpServletRequest req) {
+		
+		HashMap<String, Boolean> result = new HashMap<String,Boolean>();
+		if(userService.idCheck(user.getId())) {
+			result.put("data", false);
+			return result;
+		}
 
-		HttpSession session = req.getSession();
-		session.setAttribute("user", user);
+		req.getSession().setAttribute("joinUser", user);
+		result.put("data", true);
 
-		return "ntf/join/second";
+		return result;
 	} 
+
+	@RequestMapping("joinSec")
+	public String joinSec(HttpServletRequest req) {
+		if(req.getSession().getAttribute("joinUser") == null) {
+			return "redirect:/";
+		} else {
+			return "/ntf/join/second";
+		}
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "joinSecond", method = RequestMethod.POST)
@@ -108,7 +121,7 @@ public class UserController {
 	@RequestParam("subLocate") ArrayList<String> subLocateList, HttpServletRequest req) {
 
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("user");
+		User user = (User)session.getAttribute("joinUser");
 		boolean joinResult = false;
 		boolean locateResult = false;
 		boolean interestResult = false;
@@ -140,6 +153,10 @@ public class UserController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("locate", "/user/joinCompletion");
 		map.put("result", totalResult);
+
+		if(totalResult) {
+			session.setAttribute("user", user);
+		}
 
 		return map;
 	}
@@ -222,27 +239,150 @@ public class UserController {
 	}
 
 	@RequestMapping("/mypage/userInfo")
-	public String userInfo() {
+	public String userInfo(HttpServletRequest req) {
+		if(req.getSession().getAttribute("user") == null) {
+			return "redirect:/";
+		}
+
 		return "mypage/userInfo";
 	}
 
+	@RequestMapping(value = "/mypage/getUserInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> getUserInfo(HttpServletRequest req) {
+		HashMap<String, Object> result = new HashMap<String,Object>();
+		User user = (User)req.getSession().getAttribute("user");
+		result.put("user", user);
+		result.put("addressList", userService.userAddressList(user.getId()));
+
+		return result;
+	}
+
+	@RequestMapping("/mypage/userInfo/address")
+	public ModelAndView userAddress(int aNum, HttpServletRequest req) {
+		User user = (User)req.getSession().getAttribute("user");
+		if(user == null) {
+			return new ModelAndView("redirect:/");
+		}
+		ModelAndView mav = new ModelAndView("ntf/address/addAdress");
+
+		if(aNum != 0) {
+			Address address = userService.userAddress(user.getId(), aNum);
+			mav.addObject("Address", address);
+		}
+
+		return mav;
+	}
+
+	@RequestMapping(value = "address/insert", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean insertAddress(Address address, HttpServletRequest req) {
+		User user = (User)req.getSession().getAttribute("user");
+		boolean result = false;
+
+		if(user == null) {
+			System.out.println("로그인 되어있지 않음");
+			return result;
+		}
+
+		address.setId(user.getId());
+		result = userService.insertAddress(address);
+
+		return result;
+	}
+
+	@RequestMapping(value = "address/modify", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean modifyAddress(Address address, HttpServletRequest req) {
+		User user = (User)req.getSession().getAttribute("user");
+		boolean result = false;
+
+		if(user == null) {
+			System.out.println("로그인 되어있지 않음");
+			return result;
+		}
+
+		address.setId(user.getId());
+		result = userService.updateAddress(address);
+
+		return result;
+	}
+
+	@RequestMapping(value = "address/remove", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean removeAddress(int anum, HttpServletRequest req) {
+
+		System.out.println("aaa");
+		System.out.println("aNum : " + anum);
+		User user = (User)req.getSession().getAttribute("user");
+		boolean result = false;
+
+		if(user == null) {
+			System.out.println("주소 삭제 - 로그인 되어있지 않음");
+			return result;
+		}
+
+		result = userService.removeAddress(user.getId(), anum);
+
+		return result;
+	}
+
 	@RequestMapping("/mypage/modifypwd")
-	public String modifyPwd() {
+	public String modifyPwd(HttpServletRequest req) {
+		if(req.getSession().getAttribute("user") == null) {
+			return "redirect:/";
+		}
 		return "mypage/modifyPwd";
 	}
 
 	@RequestMapping("/mypage/removeUser")
-	public String removeUser() {
+	public String removeUser(HttpServletRequest req) {
+		if(req.getSession().getAttribute("user") == null) {
+			return "redirect:/";
+		}
 		return "mypage/removeUser";
 	}
 	
 	@RequestMapping("/mypage/channel")
-	public String myChannel() {
+	public String myChannel(HttpServletRequest req) {
+		if(req.getSession().getAttribute("user") == null) {
+			return "redirect:/";
+		}
 		return "mypage/channel";
 	}
 
+	@RequestMapping("/nav_callback")
+	public String myChannelNavCallback(HttpServletRequest req) {
+		if(req.getSession().getAttribute("user") == null) {
+			return "redirect:/";
+		}
+		
+		return "mypage/channel/navCallback";
+	}
+
+	@RequestMapping(value = "/naver/add", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, String> naverAdd(String email, HttpServletRequest req) {
+		HashMap<String, String> result = new HashMap<String,String>();
+		if(email == null) {
+			result.put("email", "false");
+		}
+
+		User user = (User)req.getSession().getAttribute("user");
+		boolean navAddRes = userService.addNaverId(email, user.getId());
+
+		System.out.println("navAddRes : " + navAddRes);
+
+		result.put("navAdd", ""+navAddRes);
+		result.put("result", email);
+		return result;
+	}
+
 	@RequestMapping("/mypage/point")
-	public String myPoint() {
+	public String myPoint(HttpServletRequest req) {
+		if(req.getSession().getAttribute("user") == null) {
+			return "redirect:/";
+		}
 		return "mypage/point";
 	}
 

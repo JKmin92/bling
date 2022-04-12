@@ -5,10 +5,8 @@ kr/com/amean/controller/ExperienceController.class
 kr/com/amean/service/ExperienceSerivce.class
 kr/com/amean/controller/ManaContoroller.class
 kr/com/amean/provider/ExperienceProvider.class
-kr/com/amean/entity/Guide.class
 kr/com/amean/service/impl/ExperienceServiceImpl.class
 kr/com/amean/entity/experience/Experience.class
-kr/com/amean/entity/user/Adress.class
 kr/com/amean/entity/user/User.class
 kr/com/amean/entity/experience/Guide.class
 kr/com/amean/controller/UserController.class
@@ -16,6 +14,7 @@ kr/com/amean/entity/user/Area.class
 kr/com/amean/entity/user/Interest.class
 kr/com/amean/entity/Consent.class
 kr/com/amean/service/impl/UserServiceImpl.class
+kr/com/amean/entity/SmartEditorVO.class
 kr/com/amean/provider/mapper/UserMapper.class
 kr/com/amean/entity/experience/Review.class
 kr/com/amean/controller/BoardController.class
@@ -23,5 +22,6 @@ kr/com/amean/entity/Management.class
 kr/com/amean/provider/logic/UserProviderLogic.class
 kr/com/amean/entity/experience/Apply.class
 kr/com/amean/provider/UserProvider.class
+kr/com/amean/entity/user/Address.class
 kr/com/amean/provider/logic/ExperienceProviderLogic.class
 kr/com/amean/provider/factory/SqlsessionFactoryProvider.class

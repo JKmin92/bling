@@ -14,6 +14,8 @@
         <typeAlias type="kr.com.amean.entity.user.User" alias="User" />
         <typeAlias type="kr.com.amean.entity.user.Interest" alias="Interest" />
         <typeAlias type="kr.com.amean.entity.user.Area" alias="Area" />
+        <typeAlias type="kr.com.amean.entity.user.Address" alias="Address" />
+        <typeAlias type="kr.com.amean.entity.SmartEditorVO" alias="SmartEditorVO" />
     </typeAliases>
 
     <environments default="development">

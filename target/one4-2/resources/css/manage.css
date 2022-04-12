@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+* {box-sizing: border-box;}
+body {margin: 0;}
+a {text-decoration: none; color:inherit;}
+
+.manage_gnb {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    background: #f5f5f5;
+    padding: 30px 20px;
+    z-index: 999;
+}
+
+.manage_gnb .logo {width: 100%; padding-bottom: 30px;}
+.manage_gnb .list {width: 100%;}
+.manage_gnb .list ul {margin:15px 0; padding:0; border-top:1px solid; border-bottom: 1px solid;}
+.manage_gnb .list ul li {padding:15px 0; cursor: pointer;}
+
+header {
+    padding: 10px 0 10px 240px;
+    height: 80px;
+    border-bottom: 1px solid #ccc;
+    min-width: 1090px;
+}
+
+.man_container {padding-left:240px; margin-top:40px;}
+
+.exper_list .btn {width:100%; text-align: right; padding:30px;}
+.exper_list .btn .add {
+    width:150px; 
+    padding:5px 15px; 
+    border:1px solid #eee;
+    border-radius: 15px; 
+    text-align: center; 
+    font-size: 12px; 
+    display: inline;
+}
+.exper_list .experience_table {width:100%; margin-top:30px;}
+.exper_list .experience_table tbody tr td {padding: 0 15px;}
+.exper_list .experience_table tbody tr td .info {padding-top:10px;}
+.exper_list .experience_table tbody tr td .info p {margin: 5px 0;}
+.exper_list .experience_table tbody tr td .info .kind {font-size:16px; font-weight: bold; color: #09b009;}
+.exper_list .experience_table tbody tr td .info .ex_title {font-size: 16px; font-weight: bold;}
+.exper_list .experience_table tbody tr td .info .ex_service {font-size: 14px; color: #6a6a6a;}
+.exper_list .experience_table tbody tr td .info .ex_preg {width:100%; height: 3px; background: #eee;}
+.exper_list .experience_table tbody tr td .info .ex_preg .ex_preg_rhap {background: #ea7205; height:3px;}
+.exper_list .experience_table tbody tr td .info .ex_pe {text-align: right; font-size: 14px; color: #555; margin-top: 5px;}
+
+.exper_list .exper_filter {width: 95%; border-bottom: 1px solid #ccc; min-width: 1090px; display: table;}
+.exper_list .exper_filter .category, .exper_list .exper_filter .channel_sort {display: table-cell;}
+.exper_list .exper_filter .category ul li.select {border-bottom: 1px solid rgb(7, 9, 112);}
+.exper_list .exper_filter .category ul li {display: inline-block; padding: 10px; cursor: pointer;}
+.exper_list .exper_filter .category ul li:hover {border-bottom: 1px solid rgb(7, 9, 112);}
+.exper_list .exper_filter .channel_sort {text-align: right;}
+.exper_list .exper_filter .channel_sort ul li.select {border-color: rgb(7, 9, 112);}
+.exper_list .exper_filter .channel_sort ul li.sort select {border:none;}
+.exper_list .exper_filter .channel_sort ul li {
+    display: inline-block;
+    padding: 5px 18px;
+    border: 1px solid #e9e9e9;
+    border-radius: 15px;
+    font-size: 14px;
+    width: 80px;
+    text-align: center;
+    cursor: pointer;
+}
+.exper_list .exper_filter .channel_sort ul li.sort {width: 120px;}
+
+.man_container .tr {display: table; width:100%; padding: 30px 0; border-bottom: 1px solid #eee;}
+.man_container .tr .tit, .man_container .tr .con {display: table-cell;}
+.man_container .tr .tit {width:150px; vertical-align: middle;}
+.man_container .tr .con {width:80%;}
+.man_container .channel li {display: inline;}
+.channel li input[type=checkbox] + label {display: inline; padding:5px; border: 1px solid #eee; font-size:12px;}
+.channel li input[type=checkbox] {display: none;}
+.channel li input[type=checkbox]:checked + label {background: rgb(167, 167, 167); color: white; border-color: rgb(167, 167, 167);}
+
+.add_exper {width:1090px; max-width:100%;}
+.add_exper input, .add_exper textarea {border:none; width:100%;}
+.add_exper textarea {height: 200px;}
+.add_exper .date input {width:180px;}
+.add_exper .keyword input {width:70%;}
+.add_exper .in_bor {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    width: 70%;
+    min-width: 600px;
+}
+.add_exper .keyword .in_bor  {width:auto; display: inline; margin-left: 15px;}
+.add_exper .btn {width:100%; text-align: right;}
+.add_exper .btn button, .add_exper .btn .cancel {
+    width:150px; 
+    text-align: center; 
+    border-radius: 15px; 
+    margin:20px 15px; 
+    padding:10px; 
+    border:none;
+    background: rgb(58, 42, 194); 
+    color:white;
+    display: inline-block;
+}
+.add_exper .date .dateType {padding:30px 0;}
+.add_exper .date .dateType input[type=radio] {width: 30px;}
+.add_exper .date input[type=text]  {width}
+.add_exper .btn button[type='submit'] {background: #ED3739;}
+
+.userList table {width:100%; border-collapse: collapse; max-width: 1090px;}
+.userList table thead td {background: #e5e5e5;}
+.userList table td {border: 1px solid #ccc; padding:10px;}
+.userList table td li {float:left; padding:0 10px;}
+
+.experApply {width:100%; max-width:1090px;}
+.experApply .title, .experApply .btns {display: inline-block;}
+.experApply .title h3 {display: inline;}
+.experApply .btns {text-align: right; width:900px;}
+.experApply .btns .href_btn {
+    width:150px; 
+    margin:0 15px; 
+    padding:5px 15px; 
+    border-radius: 15px; 
+    color:white; 
+    font-size: 12px; 
+    display: inline;
+}
+.experApply .btns .modify {background: rgb(81 88 205);}
+.experApply .btns .remove {background: #ED3739;}
+.experApply .experInfo .channel {padding:20px 0; border-bottom:1px solid #ccc;}
+.experApply .experInfo .channel ul li {display: none; border: 1px solid #eee; font-size: 12px; padding: 5px;}
+.experApply .experInfo .channel ul li.show {display: inline;}
+.experApply .experInfo .ex_date {display: table; padding:20px 0; width:100%; border-bottom: 1px solid #ccc;}
+.experApply .experInfo .ex_date .t1, .experApply .experInfo .ex_date .t2 {display: inline-block; width:150px;}
+.experApply .apply_list {margin: 30px 0; border-collapse: collapse; text-align: center;}
+.experApply .apply_list td {border:1px solid #eee; padding:10px 0;}
+.experApply .apply_list thead {text-align: center;}
+

@@ -19,18 +19,20 @@ public class Experience {
 	private boolean kind_i;
 	private boolean kind_s;
 	private boolean kind_h;
+	private boolean kind_r;
 	/**
 	 * 모집인원
 	 */
 	private int head_count;
 	private String content;
-	private String condition;
+	private String contentImage;
 	private Date start_date;
 	private Date end_date;
+	private Date des_date;
 	
 	public Experience(int e_num, String title, String subject, String service, String main_img, String mCategory, String sCategory, 
-	String area, boolean kind_n, boolean kind_i, boolean kind_s, boolean kind_h, int head_count, String content, String condition,
-			Date start_date, Date end_date) {
+	String area, boolean kind_n, boolean kind_i, boolean kind_s, boolean kind_h, boolean kind_r, int head_count, String content, String contentImage,
+			Date start_date, Date end_date, Date des_date) {
 		this.e_num = e_num;
 		this.title = title;
 		this.subject = subject;
@@ -42,16 +44,18 @@ public class Experience {
 		this.kind_i = kind_i;
 		this.kind_s = kind_s;
 		this.kind_h = kind_h;
+		this.kind_r = kind_r;
 		this.head_count = head_count;
 		this.content = content;
-		this.condition = condition;
+		this.contentImage = contentImage;
 		this.start_date = start_date;
 		this.end_date = end_date;
+		this.des_date = des_date;
 	}
 
 	public Experience(String title, String subject, String service, String main_img, String mCategory, String sCategory, 
-	String area, boolean kind_n, boolean kind_i, boolean kind_s, boolean kind_h, int head_count, String content, String condition,
-			Date start_date, Date end_date) {
+	String area, boolean kind_n, boolean kind_i, boolean kind_s, boolean kind_h, boolean kind_r, int head_count, String content, String contentImage,
+			Date start_date, Date end_date, Date des_dete) {
 		this.title = title;
 		this.subject = subject;
 		this.service = service;
@@ -62,11 +66,13 @@ public class Experience {
 		this.kind_i = kind_i;
 		this.kind_s = kind_s;
 		this.kind_h = kind_h;
+		this.kind_r = kind_r;
 		this.head_count = head_count;
 		this.content = content;
-		this.condition = condition;
+		this.contentImage = contentImage;
 		this.start_date = start_date;
 		this.end_date = end_date;
+		this.des_date = des_dete;
 	}
 
 	public Experience() {}
@@ -167,6 +173,14 @@ public class Experience {
 		this.kind_h = kind_h;
 	}
 
+	public boolean isKind_r() {
+		return kind_r;
+	}
+
+	public void setKind_r(boolean kind_r) {
+		this.kind_r = kind_r;
+	}
+
 	public int getHead_count() {
 		return head_count;
 	}
@@ -183,12 +197,12 @@ public class Experience {
 		this.content = content;
 	}
 
-	public String getCondition() {
-		return condition;
+	public String getContentImage() {
+		return contentImage;
 	}
 
-	public void setCondition(String condition) {
-		this.condition = condition;
+	public void setContentImage(String contentImage) {
+		this.contentImage = contentImage;
 	}
 
 	public Date getStart_date() {
@@ -207,7 +221,13 @@ public class Experience {
 		this.end_date = end_date;
 	}
 
-	
+	public Date getDes_date() {
+		return des_date;
+	}
+
+	public void setDes_date(Date des_date) {
+		this.des_date = des_date;
+	}
 
 	
 	

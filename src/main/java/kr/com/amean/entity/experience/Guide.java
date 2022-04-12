@@ -1,14 +1,17 @@
 package kr.com.amean.entity.experience;
 
+import java.util.Date;
+
 public class Guide {
 
     private int gNum;
     private int eNum;
     private String id;
     private String guideName;
-    private String serviceName;
+    private String service;
     private String keyword;
     private String subKeyword;
+    private String visitInfo;
     private String mission;
     private String caution;
     private String teg;
@@ -16,42 +19,48 @@ public class Guide {
     private String homepage;
     private String site2;
     private String site3;
+    private String closeDate;
     
     public Guide() {}
 
-    public Guide(int gNum, int eNum, String id, String guideName, String serviceName, String keyword, String subKeyword, String mission, 
-    String caution, String teg, String locate, String homepage, String site2, String site3) {
+    public Guide(int gNum, int eNum, String id, String guideName, String service, String keyword, String subKeyword, 
+    String visitInfo, String mission, String caution, String teg, String locate, String homepage, String site2, 
+    String site3, String closeDate) {
         this.gNum = gNum;
         this.eNum = eNum;
         this.id = id;
         this.guideName = guideName;
-        this.serviceName = serviceName;
+        this.service = service;
         this.keyword = keyword;
         this.subKeyword = subKeyword;
         this.mission = mission;
+        this.visitInfo = visitInfo;
         this.caution = caution;
         this.teg = teg;
         this.locate = locate;
         this.homepage = homepage;
         this.site2 = site2;
         this.site3 = site3;
+        this.closeDate = closeDate;
     }
 
-    public Guide(int eNum, String id, String guideName, String serviceName, String keyword, String subKeyword, String mission, String caution, 
-    String teg, String locate, String homepage, String site2, String site3) {
+    public Guide(int eNum, String id, String guideName, String service, String keyword, String subKeyword, String visitInfo, 
+    String mission, String caution, String teg, String locate, String homepage, String site2, String site3, String closeDate) {
         this.eNum = eNum;
         this.id = id;
         this.guideName = guideName;
-        this.serviceName = serviceName;
+        this.service = service;
         this.keyword = keyword;
         this.subKeyword = subKeyword;
         this.mission = mission;
+        this.visitInfo = visitInfo;
         this.caution = caution;
         this.teg = teg;
         this.locate = locate;
         this.homepage = homepage;
         this.site2 = site2;
         this.site3 = site3;
+        this.closeDate = closeDate;
     }
 
     public int getGNum() {
@@ -78,12 +87,12 @@ public class Guide {
         this.id = id;
     }
 
-    public String getServiceName() {
-        return this.serviceName;
+    public String getService() {
+        return this.service;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setService(String service) {
+        this.service = service;
     }
 
     public String getGuideName() {
@@ -108,6 +117,14 @@ public class Guide {
 
     public void setSubKeyword(String subKeyword) {
         this.subKeyword = subKeyword;
+    }
+
+    public String getVisitInfo() {
+        return this.visitInfo;
+    }
+
+    public void setVisitInfo(String visitInfo) {
+        this.visitInfo = visitInfo;
     }
 
     public String getMission() {
@@ -166,4 +183,11 @@ public class Guide {
         this.site3 = site3;
     }
     
+    public String getCloseDate() {
+        return this.closeDate;
+    }
+
+    public void setCloseDate(String closeDate) {
+        this.closeDate = closeDate;
+    }
 }

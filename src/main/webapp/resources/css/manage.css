@@ -72,8 +72,10 @@ header {
 .man_container .tr .tit, .man_container .tr .con {display: table-cell;}
 .man_container .tr .tit {width:150px; vertical-align: middle;}
 .man_container .tr .con {width:80%;}
-.man_container .tr .con.channel ul li {display: inline; padding:5px; border: 1px solid #eee; font-size:12px;}
-.man_container .tr .con.channel ul li.active {background: rgb(167, 167, 167); color:white; border:none;}
+.man_container .channel li {display: inline;}
+.channel li input[type=checkbox] + label {display: inline; padding:5px; border: 1px solid #eee; font-size:12px;}
+.channel li input[type=checkbox] {display: none;}
+.channel li input[type=checkbox]:checked + label {background: rgb(167, 167, 167); color: white; border-color: rgb(167, 167, 167);}
 
 .add_exper {width:1090px; max-width:100%;}
 .add_exper input, .add_exper textarea {border:none; width:100%;}
@@ -85,6 +87,7 @@ header {
     border: 1px solid #eee;
     border-radius: 10px;
     width: 70%;
+    min-width: 600px;
 }
 .add_exper .date .in_bor, .add_exper .keyword .in_bor  {width:auto; display: inline; margin-left: 15px;}
 .add_exper .btn {width:100%; text-align: right;}
@@ -97,7 +100,10 @@ header {
     border:none;
     background: rgb(58, 42, 194); 
     color:white;
+    display: inline-block;
 }
+.add_exper .date .dateType {padding:30px 0;}
+.add_exper .date .dateType input[type=radio] {width: 30px;}
 .add_exper .btn button[type='submit'] {background: #ED3739;}
 
 .userList table {width:100%; border-collapse: collapse; max-width: 1090px;}
