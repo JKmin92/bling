@@ -9,6 +9,11 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,21 +24,158 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.com.amean.entity.SmartEditorVO;
+import kr.com.amean.entity.experience.Experience;
 import kr.com.amean.service.ExperienceSerivce;
 
 
 @Controller
 public class MainController {
+ 
 	
 	@Autowired ExperienceSerivce experienceService;
 
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		return "tf/home";
+		return "tf/coming";
+	}
+
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public ModelAndView index() throws NullPointerException {
+		ModelAndView mav = new ModelAndView("tf/home");
+
+		
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/mainExper", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, List<Experience>> mainExperience() {
+
+
+		HashMap<String, List<Experience>> map = new HashMap<String,List<Experience>>();
+
+		List<Experience> deadLineExperience = new ArrayList<Experience>();
+		List<Experience> newExperience = new ArrayList<Experience>();
+		List<Experience> populaPlaceExperience = new ArrayList<Experience>();
+		List<Experience> populaProductExperience = new ArrayList<Experience>();
+
+		List<Experience> experienceList = experienceService.selectExperienceList();
+
+		Date today = new Date();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(today);
+		calendar.clear(Calendar.SECOND);
+		calendar.clear(Calendar.MINUTE);
+		calendar.clear(Calendar.HOUR_OF_DAY);
+		calendar.add(Calendar.DATE, -1);
+		today = calendar.getTime();
+		
+		for(Experience experience : experienceList) {
+
+			if(!experience.isOpen()) continue;
+
+			Date endDate = experience.getEndDate();
+			Date startDate = experience.getStartDate();
+
+			if(!today.after(endDate)) {
+				long diffDaysDead = ((endDate.getTime() - today.getTime()) / 1000) / (24*60*60);
+				if(diffDaysDead <= 3) {
+					if(deadLineExperience.size() <= 5) {
+						deadLineExperience.add(experience);
+					}
+				}
+			}
+
+			if((today.equals(startDate) || startDate.before(today)) && !today.after(endDate)) {
+				long diffDaysNew = ((today.getTime() - startDate.getTime()) / 1000) / (24*60*60);
+				if(diffDaysNew <= 3 && diffDaysNew >= 0) {
+					if(newExperience.size() <= 5) {
+						newExperience.add(experience);
+					}
+				}
+			}
+			
+			if(experience.getMCategory().equals("방문")) {
+				if(today.before(experience.getEndDate())){
+					if(populaPlaceExperience.size() <= 5) {
+						populaPlaceExperience.add(experience);
+					} else {
+						int populaPlaceExperIndex = -1;
+						int rowIndex = 0;
+						for(int i=0; i<= populaPlaceExperience.size()-1; i++) {
+							if(populaPlaceExperience.get(i).getApplyCount() < experience.getApplyCount()) {
+								populaPlaceExperIndex = i;
+							}
+
+							if(populaPlaceExperience.get(i).getApplyCount() <= populaProductExperience.get(rowIndex).getApplyCount()) {
+								rowIndex = i;
+							}
+						}
+
+						if(populaPlaceExperIndex != -1) {
+							populaPlaceExperience.remove(rowIndex);
+							populaPlaceExperience.add(experience);
+						}
+					}
+				}
+			}
+
+			if(experience.getMCategory().equals("제품")) {
+				if(today.before(experience.getEndDate())){
+
+					if(populaProductExperience.size() <= 5) {
+						populaProductExperience.add(experience);
+					} else {
+						int populaProductExperIndex = -1;
+						int rowIndex = 0;
+						for(int i=0; i<= populaProductExperience.size()-1; i++) {
+							if(populaProductExperience.get(i).getApplyCount() < experience.getApplyCount()) {
+								populaProductExperIndex = i;
+							}
+
+							if(populaProductExperience.get(i).getApplyCount() <= populaProductExperience.get(rowIndex).getApplyCount()) {
+								rowIndex = i;
+							}
+						}
+
+						if(populaProductExperIndex != -1) {
+							populaProductExperience.remove(rowIndex);
+							populaProductExperience.add(experience);
+						}
+					}
+				}
+			}
+		}
+
+
+		map.put("deadLineExperience", deadLineExperience);
+		map.put("newExperience", newExperience);
+		map.put("populaPlaceExperience", populaPlaceExperience);
+		map.put("populaProductExperience", populaProductExperience);
+
+		return map;
+	}
+
+	@RequestMapping("/policy/userInfoView")
+	public String userInfoPolicyView() {
+		return "tf/policy/userInfoPolicyView";
+	}
+
+	@RequestMapping("/policy/useServiceView")
+	public String useServicePolicyView() {
+		return "tf/policy/useServicePolicyView";
+	}
+
+	@RequestMapping("/policy/operationView")
+	public String operationPolicyView() {
+		return "tf/policy/operationPolicyView";
 	}
 	
 	@RequestMapping("/editImageUpload")

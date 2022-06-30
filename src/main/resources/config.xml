@@ -9,13 +9,21 @@
         <typeAlias type="kr.com.amean.entity.experience.Experience" alias="Experience" />
         <typeAlias type="kr.com.amean.entity.experience.Review" alias="Review" />
         <typeAlias type="kr.com.amean.entity.experience.Guide" alias="Guide" />
-        <typeAlias type="kr.com.amean.entity.Consent" alias="Consent" />
+        <typeAlias type="kr.com.amean.entity.experience.Consent" alias="Consent" />
+        <typeAlias type="kr.com.amean.entity.experience.InterestCampaign" alias="InterestCampaign" />
+        <typeAlias type="kr.com.amean.entity.experience.UserConsent" alias="UserConsent" />
         <typeAlias type="kr.com.amean.entity.Management" alias="Management" />
         <typeAlias type="kr.com.amean.entity.user.User" alias="User" />
         <typeAlias type="kr.com.amean.entity.user.Interest" alias="Interest" />
         <typeAlias type="kr.com.amean.entity.user.Area" alias="Area" />
         <typeAlias type="kr.com.amean.entity.user.Address" alias="Address" />
+        <typeAlias type="kr.com.amean.entity.user.Channel" alias="Channel" />
+        <typeAlias type="kr.com.amean.entity.board.Board" alias="Board" />
+        <typeAlias type="kr.com.amean.entity.board.Inquery" alias="Inquery" />
         <typeAlias type="kr.com.amean.entity.SmartEditorVO" alias="SmartEditorVO" />
+        <typeAlias type="kr.com.amean.entity.bank.Bank" alias="Bank" />
+        <typeAlias type="kr.com.amean.entity.bank.BankTake" alias="BankTake" />
+        <typeAlias type="kr.com.amean.entity.bank.Cumalative" alias="Cumalative" />
     </typeAliases>
 
     <environments default="development">
@@ -33,6 +41,7 @@
     <mappers>
         <mapper resource="mapper/ExperienceMapper.xml" />
         <mapper resource="mapper/UserMapper.xml" />
+        <mapper resource="mapper/BoardMapper.xml" />
     </mappers>
 
 </configuration>

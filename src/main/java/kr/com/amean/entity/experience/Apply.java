@@ -10,20 +10,36 @@ public class Apply {
 	private int a_num;
 	private String id;
 	private int e_num;
-	private Date date;
-	private boolean state;
+	private int addressNum;
+	private Date insertDate;
+	private int c_num;
+	/**
+	 * 1 = 체험신청
+	 * 2 = 선정
+	 * 3 = 미작성
+	 * 4 = 작성완료
+	 * 5 = 수정중
+	 * 6 = 최종 완료
+	 * 0 = 선정취소
+	 * -1 = 체험취소
+	 */
+	private int state;
+	private Date createDate;
 	private String comment;
 	private String cancel_reason;
 	private Date cancel_date;
 	private boolean cancel_state;
 
-	public Apply(int a_num, String id, int e_num, Date date, boolean state, String comment, String cancel_reason, Date cancel_date,
+	public Apply(int a_num, String id, int e_num, int addressNum, Date insertDate, int c_num, int state, Date createDate, String comment, String cancel_reason, Date cancel_date,
 			boolean cancel_state) {
 		this.a_num = a_num;
 		this.id = id;
+		this.addressNum = addressNum;
 		this.e_num = e_num;
-		this.date = date;
+		this.insertDate = insertDate;
+		this.c_num = c_num;
 		this.state = state;
+		this.createDate = createDate;
 		this.comment = comment;
 		this.cancel_reason = cancel_reason;
 		this.cancel_date = cancel_date;
@@ -48,6 +64,14 @@ public class Apply {
 		this.id = id;
 	}
 
+	public int getAddressNum() {
+		return addressNum;
+	}
+
+	public void setAddressNum(int addressNum) {
+		this.addressNum = addressNum;
+	}
+
 	public int getE_num() {
 		return e_num;
 	}
@@ -56,20 +80,36 @@ public class Apply {
 		this.e_num = e_num;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getInsertDate() {
+		return insertDate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setInsertDate(Date insertDate) {
+		this.insertDate = insertDate;
+	}
+
+	public int getC_num() {
+		return this.c_num;
+	}
+
+	public void setC_num(int c_num) {
+		this.c_num = c_num;
 	}
 	
-	public boolean isState() {
+	public int getState() {
 		return state;
 	}
 
-	public void setState(boolean state) {
+	public void setState(int state) {
 		this.state = state;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 	
 	public String getComment() {

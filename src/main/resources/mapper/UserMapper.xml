@@ -5,9 +5,15 @@
 
 <mapper namespace="kr.com.amean.provider.mapper.UserMapper">
     <insert id="userJoin" parameterType="User">
-        insert into userTB (id, password, nickName, phone_number, gender, n_id, i_id, sAgr, eAgr, serviceAgr, privatAgr)
-        values (#{id}, #{pw}, #{nickName}, #{phone_number}, #{gender}, #{n_id}, #{i_id}, #{sAgr}, #{eAgr}, #{serviceAgr}, #{privatAgr})
+        insert into userTB (id, password, name, nickName, phone_number, gender, sAgr, serviceAgr, privatAgr, userKey, kakao_id, naver_id, facebook_id)
+        values (#{id}, #{password}, #{name}, #{nickName}, #{phone_number}, #{gender}, #{sAgr}, #{serviceAgr}, #{privatAgr}, #{userKey}, #{kakao_id}, #{naver_id}, #{facebook_id})
     </insert>
+
+    <update id="updateUser" parameterType="User">
+        update userTB
+        set password=#{password}, nickName=#{nickName}, phone_number=#{phone_number}, sAgr=#{sAgr}, userKey=#{userKey}
+        where id=#{id}
+    </update>
 
     <insert id="addArea" parameterType="Area">
         insert into areaTB(id, mLocate, sLocate)
@@ -15,8 +21,8 @@
     </insert>
 
     <insert id="addInterest" parameterType="Interest">
-        insert into interestTB (id, first, seconde, third)
-        values (#{id}, #{first}, #{seconde}, #{third})
+        insert into interestTB (id, item)
+        values (#{id}, #{item})
     </insert>
 
     <select id="login" parameterType="HashMap" resultType="User">
@@ -25,16 +31,34 @@
         where id = #{id} AND password = #{password}
     </select>
 
+    <select id="getUserData" parameterType="String" resultType="User">
+        select id, nickName, phone_number
+        from userTB
+        where id=#{id}
+    </select>
+
+    <select id="getUserKey" parameterType="String" resultType="String">
+        select userKey
+        from userTB
+        where id=#{id}
+    </select>
+
     <select id="userCheck" parameterType="String" resultType="String">
         select id
         from userTB
         where id=#{id}
     </select>
 
-    <update id="addNavID" parameterType="HashMap">
+    <select id="findUser" parameterType="HashMap" resultType="String">
+        select id
+        from userTB
+        where id=#{id} and phone_number=#{phone}
+    </select>
+
+    <update id="updatePasswordFind" parameterType="HashMap">
         update userTB
-        set n_id = #{nId}
-        where id = #{userId}
+        set password=#{password}, userKey=#{userKey}
+        where id=#{id}
     </update>
 
     <select id="addressList" parameterType="String" resultType="Address">
@@ -49,18 +73,26 @@
         where id = #{id} and aNum = #{aNum}
     </select>
 
-    <insert id="insertAddress" parameterType="Address">
+    <select id="basicAddress" parameterType="HashMap" resultType="Address">
+        select *
+        from addressTB
+        where id=#{id} and basic=true
+    </select>
+
+    <select id="activeAddress" parameterType="HashMap" resultType="Address">
+        select *
+        from addressTB
+        where id=#{id} and aNum=#{aNum}
+    </select>
+
+    <insert id="insertAddress" parameterType="Address" useGeneratedKeys="true" keyColumn="aNum" keyProperty="aNum">
         insert into addressTB(id, name, address, detail, zipCode, basic)
         values (#{id}, #{name}, #{address}, #{detail}, #{zipCode}, #{basic})
     </insert>
 
     <update id="updateAddress" parameterType="Address">
         update addressTB
-        set basic=false
-        where id=#{id}
-
-        update addressTB
-        set name=${name}, address=${address}, detail=#{detail}, zipCode=#{zipCode},basic=#{basic}
+        set address=#{address}, detail=#{detail}, zipCode=#{zipCode},basic=#{basic}
         where id=#{id} and aNum=#{aNum}
     </update>
 
@@ -68,4 +100,162 @@
         delete from addressTB
         where id=#{id} and aNum=#{aNum}
     </delete>
+
+    <select id="getApplyAddress" parameterType="Integer" resultType="Address">
+        select *
+        from addressTB
+        where aNum=#{aNum}
+    </select>
+
+    <select id="cumalativeList" parameterType="String" resultType="Cumalative">
+        select *
+        from cumalativeTB
+        where id = #{id}
+    </select>
+
+    <select id="bankTakeList" parameterType="String" resultType="BankTake">
+        select *
+        from banktakeTB
+        where id = #{id}
+    </select>
+
+    <select id="selectBank" parameterType="String" resultType="Bank">
+        select *
+        from bankTB
+        where id = #{id}
+    </select>
+
+    <insert id="insertBank" parameterType="Bank">
+        insert into bankTB(id, bankName, bankNumber, holder, presentPoint, cumalatePoint)
+        values (#{id}, #{bankName}, #{bankNumber}, #{holder}, #{presentPoint}, #{cumalatePoint})
+    </insert>
+
+    <update id="updateBank" parameterType="Bank">
+        update bankTB
+        set bankName = #{bankName}, bankNumber = #{bankNumber}, holder = #{holder}, presentPoint = #{presentPoint}, cumalatePoint = #{cumalatePoint}
+        where b_num = #{b_num} and id = #{id}
+    </update>
+
+    <insert id="insertBankTake" parameterType="BankTake">
+        insert into banktakeTB(id, takeDate, takeContent, takePoint)
+        values (#{id}, #{takeDate}, #{takeContent}, #{takePoint})
+    </insert>
+
+    <insert id="insertChannel" parameterType="Channel" useGeneratedKeys="true" keyColumn="c_num" keyProperty="c_num">
+        insert into channelTB(id, channelCode, url, basic)
+        values (#{id}, #{channelCode}, #{url}, #{basic})
+    </insert>
+
+    <update id="updateChannel" parameterType="Channel">
+        update channelTB
+        set channelCode=#{channelCode}, url = #{url}, basic=#{basic}
+        where c_num = #{c_num} and id = #{id}
+    </update>
+
+    <select id="basicChannel" parameterType="HashMap" resultType="Channel">
+        select *
+        from channelTB
+        where id = #{id} and basic = true and channelCode = #{channelCode}
+    </select>
+
+    <select id="userChannel" parameterType="String" resultType="Channel">
+        select *
+        from channelTB
+        where id = #{id}
+    </select>
+
+    <select id="applyChannel" parameterType="HashMap" resultType="Channel">
+        select *
+        from channelTB
+        where id=#{id} and c_num=#{c_num}
+    </select>
+
+    <select id="userArea" parameterType="String" resultType="Area">
+        select *
+        from areaTB
+        where id = #{id}
+    </select>
+
+    <select id="userInterest" parameterType="String" resultType="Interest">
+        select *
+        from interestTB
+        where id = #{id}
+    </select>
+
+    <update id="updateArea" parameterType="Area">
+        update areaTB
+        set mCategory=#{mCategory}, sCategory=#{sCategory}
+        where aNum=#{aNum} and id=#{id}
+    </update>
+
+    <update id="updateInterest" parameterType="Interest">
+        update interestTB
+        set item=#{item}
+        where iNum=#{iNum} and id=#{id}
+    </update>
+
+    <select id="loginForKakao" parameterType="String">
+        select *
+        from UserTB
+        where kakao_id = ${channelId}
+    </select>
+
+    <select id="loginForNaver" parameterType="String">
+        select *
+        from UserTB
+        where naver_id = ${channelId}
+    </select>
+
+    <select id="loginForFacebook" parameterType="String">
+        select *
+        from UserTB
+        where facebook_id = ${channelId}
+    </select>
+
+    <delete id="deleteInterest" parameterType="String">
+        delete from InterestTB
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteArea" parameterType="String">
+        delete from areaTB
+        where id = #{id}
+    </delete>
+
+    <update id="onChannelKakaoId" parameterType="HashMap">
+        update userTB
+        set kakao_id = #{channelId}
+        where id = #{id}
+    </update>
+
+    <update id="offChannelKakaoId" parameterType="String">
+        update userTB
+        set kakao_id = null
+        where id = #{id}
+    </update>
+
+    <update id="onChannelNaverId" parameterType="HashMap">
+        update userTB
+        set naver_id = #{channelId}
+        where id = #{id}
+    </update>
+
+    <update id="offChannelNaverId" parameterType="String">
+        update userTB
+        set naver_id = null
+        where id = #{id}
+    </update>
+
+    <update id="onChannelFacebookId" parameterType="HashMap">
+        update userTB
+        set facebook_id = #{channelId}
+        where id = #{id}
+    </update>
+
+    <update id="offChannelFacebookId" parameterType="String">
+        update userTB
+        set facebook_id = null
+        where id = #{id}
+    </update>
+
 </mapper>

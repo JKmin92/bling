@@ -1,7 +1,5 @@
 package kr.com.amean.entity.experience;
 
-import java.util.Date;
-
 public class Guide {
 
     private int gNum;

@@ -7,27 +7,21 @@ public class Interest {
 
     private int iNum;
     private String id;
-    private String first;
-    private String seconde;
-    private String third;
+    private String item;
 
     public Interest() {
         //empty
     }
 
-    public Interest(String id, String first, String seconde, String third) {
+    public Interest(String id, String item) {
         this.id = id;
-        this.first = first;
-        this.seconde = seconde;
-        this.third = third;
+        this.item = item;
     }
 
-    public Interest(int iNum, String id, String first, String seconde, String third) {
+    public Interest(int iNum, String id, String item) {
         this.iNum = iNum;
         this.id = id;
-        this.first = first;
-        this.seconde = seconde;
-        this.third = third;
+        this.item = item;
     }
 
     public void setINum(int iNum) {
@@ -46,30 +40,13 @@ public class Interest {
         return this.id;
     }
 
-    public void setFirst(String first) {
-        this.first = first;
+    public void setItem(String item) {
+        this.item = item;
     }
     
-    public String getFirst() {
-        return this.first;
+    public String getItem() {
+        return this.item;
     }
-    
-    public void setSeconde(String seconde) {
-        this.seconde = seconde;
-    }
-
-    public String getSeconde() {
-        return this.seconde;
-    }
-
-    public void setThird(String third) {
-        this.third = third;
-    }
-
-    public String getThird() {
-        return this.third;
-    }
-
 
     
 }

@@ -12,11 +12,11 @@ public class Review {
 	private String id;
 	private int e_num;
 	private Date wirte_date;
-	private String url;
-	/**
-	 * ����ĸó��
-	 */
-	private String img;
+	private String blog;
+	private String instagram;
+	private String homepage;
+	private String store;
+	private String receipt;
 	/**
 	 * 작성상태
 	 * 0=미작성
@@ -27,24 +27,30 @@ public class Review {
 	 */
 	private int state;
 	
-	public Review(int r_num, int a_num, String id, int e_num, Date wirte_date, String url, String img, int state) {
+	public Review(int r_num, int a_num, String id, int e_num, Date wirte_date, String blog, String instagram, String homepage, String store, String receipt, int state) {
 		this.r_num = r_num;
 		this.a_num = a_num;
 		this.id = id;
 		this.e_num = e_num;
 		this.wirte_date = wirte_date;
-		this.url = url;
-		this.img = img;
+		this.blog = blog;
+		this.instagram = instagram;
+		this.homepage = homepage;
+		this.store = store;
+		this.receipt = receipt;
 		this.state = state;
 	}
 
-	public Review(int a_num, String id, int e_num, Date wirte_date, String url, String img, int state) {
+	public Review(int a_num, String id, int e_num, Date wirte_date, String blog, String instagram, String homepage, String store, String receipt, int state) {
 		this.a_num = a_num;
 		this.id = id;
 		this.e_num = e_num;
 		this.wirte_date = wirte_date;
-		this.url = url;
-		this.img = img;
+		this.blog = blog;
+		this.instagram = instagram;
+		this.homepage = homepage;
+		this.store = store;
+		this.receipt = receipt;
 		this.state = state;
 	}
 	
@@ -80,18 +86,45 @@ public class Review {
 	public void setWirte_date(Date wirte_date) {
 		this.wirte_date = wirte_date;
 	}
-	public String getUrl() {
-		return url;
+	public String getBlog() {
+		return this.blog;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+
+	public void setBlog(String blog) {
+		this.blog = blog;
 	}
-	public String getImg() {
-		return img;
+
+	public String getInstagram() {
+		return this.instagram;
 	}
-	public void setImg(String img) {
-		this.img = img;
+
+	public void setInstagram(String instagram) {
+		this.instagram = instagram;
 	}
+	public String getHomepage() {
+		return this.homepage;
+	}
+
+	public void setHomepage(String homepage) {
+		this.homepage = homepage;
+	}
+
+	public String getStore() {
+		return this.store;
+	}
+
+	public void setStore(String store) {
+		this.store = store;
+	}
+
+	public String getReceipt() {
+		return this.receipt;
+	}
+
+	public void setReceipt(String receipt) {
+		this.receipt = receipt;
+	}
+	
 	public int getState() {
 		return state;
 	}
@@ -99,6 +132,4 @@ public class Review {
 		this.state = state;
 	}
 	
-	
-
 }

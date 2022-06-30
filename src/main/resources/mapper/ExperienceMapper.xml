@@ -4,30 +4,204 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.com.amean.provider.mapper.ExperienceMapper">
-    <insert id="addExperience" parameterType="Experience" useGeneratedKeys="true" keyProperty="e_num">
-      insert into experienceTB(title, subject, service, main_img, mCategory, sCategory, area, kindN, kindI, kindS, kindH,
-      kindR, headCount, content, contentImage, startDate, endDate, desDate)
-      values (#{title}, #{subject}, #{service}, #{main_img}, #{mCategory}, #{sCategory}, #{area}, #{kind_n}, #{kind_i}, #{kind_s}, 
-      #{kind_h}, #{kind_r}, #{head_count}, #{content}, #{contentImage}, #{start_date}, #{end_date}, #{des_date})
+    <insert id="addExperience" parameterType="Experience" useGeneratedKeys="true" keyColumn="e_num" keyProperty="e_num">
+      insert into experienceTB(title, subject, service, mCategory, sCategory, area, subArea, kind_n, kind_i, kind_s, kind_h, kind_r, headCount, applyCount, startDate, endDate, desDate, open)
+      values (#{title}, #{subject}, #{service}, #{mCategory}, #{sCategory}, #{area}, #{subArea}, #{kind_n}, #{kind_i}, #{kind_s}, #{kind_h}, #{kind_r}, #{headCount}, 0, #{startDate}, #{endDate}, #{desDate}, #{open})
     </insert>
+
+    <update id="updateExperience" parameterType="Experience">
+      update experienceTB
+      set title = #{title}, subject=#{subject}, service=#{service}, mCategory=#{mCategory}, sCategory=#{sCategory}, area=#{area}, kind_n=#{kind_n}, kind_i=#{kind_i}, kind_h=#{kind_h}, kind_s=#{kind_s}, kind_r=${kind_r}, startDate=#{startDate}, endDate=#{endDate}, desDate=#{desDate}
+      where e_num=#{e_num}
+    </update>
+
+    <insert id="insertConsent" parameterType="Consent">
+      insert into consentTB(e_num, title, consentCode, description, anser)
+      values(#{e_num}, #{title}, #{consentCode}, #{description}, #{anser})
+    </insert>
+
+    <select id="selectConsent" parameterType="Integer" resultType="Consent">
+      select *
+      from consentTB
+      where e_num = #{e_num}
+    </select>
+
+    <update id="updateConsent" parameterType="Consent">
+      update consentTB
+      set title=#{title}, consentCode=#{consentCode}, description=#{description}, anser=#{anser}
+      where c_num=#{c_num}
+    </update>
+
+    <delete id="deleteConsent" parameterType="Integer">
+      delete from consentTB
+      where c_num=#{c_num}
+    </delete>
 
     <update id="experImage" parameterType="hashMap">
       update experienceTB
-      set main_img = #{mainImage}
-      where eNum = #{eNum}
+      set main_img = #{mainImage}, content = #{contents}
+      where e_num = #{e_num}
     </update>
 
     <insert id="insertGuide" parameterType="Guide">
-      insert into guideTb(eNum, id, guideName, name, keyword, subKeyword, visitInfo, mission, caution, teg, locate,
-      homepage, site2, site3, closeDate)
-      values (#{eNum}, #{id}, #{guideName}, #{service}, #{keyword}, #{subKeyword}, #{visitInfo}, #{mission}, #{caution}, 
-      #{teg}, #{locate}, #{homepage}, #{site2}, #{site3}, #{closeDate})
+      insert into guideTB(eNum, id, guideName, name, keyword, subKeyword, visitInfo, mission, caution, teg, locate, homepage, site2, site3, closeDate)
+      values (#{eNum}, #{id}, #{guideName}, #{service}, #{keyword}, #{subKeyword}, #{visitInfo}, #{mission}, #{caution}, #{teg}, #{locate}, #{homepage}, #{site2}, #{site3}, #{closeDate})
     </insert>
+
+    <select id="selectGuide" parameterType="Integer" resultType="Guide">
+      select *
+      from guideTB
+      where gNum = #{gNum}
+    </select>
+
+    <select id="selectGuideForENum" parameterType="Integer" resultType="Guide">
+      select *
+      from guideTB
+      where eNum=#{e_num}
+    </select>
 
     <select id="selectExper" parameterType="Integer" resultType="Experience">
       select *
       from experienceTB
-      where eNum = #{e_num}
+      where e_num = #{e_num}
+    </select>
+
+    <select id="userExperienceList" parameterType="String" resultType="Experience">
+      select *
+      from experienceTB
+      where 
+    </select>
+
+    <select id="selectExperienceAll" resultType="Experience">
+      select *
+      from experienceTB
+      ORDER BY e_num desc
+    </select>
+
+    <select id="selectExperienceList" resultType="Experience" parameterType="String">
+      select *
+      from experienceTB
+      where mCategory = #{mCategory}
+      ORDER BY e_num desc
+    </select>
+
+    <select id="applyListManager" parameterType="Integer" resultType="Apply">
+      select *
+      from applyTB
+      where e_num = #{eNum}
+    </select>
+
+    <select id="showApply" parameterType="HashMap" resultType="Apply">
+      select *
+      from applyTB
+      where id=#{id} and e_num=#{e_num}
+    </select>
+
+    <select id="getApply" parameterType="Integer" resultType="Apply">
+      select *
+      from applyTB
+      where a_num = #{a_num};
+    </select>
+
+    <delete id="deleteApply" parameterType="Integer">
+      delete from applyTB
+      where a_num = #{a_num}
+    </delete>
+
+    <insert id="insertExperienceApply" useGeneratedKeys="true" keyColumn="a_num" keyProperty="a_num">
+      insert into applyTB(id, e_num, addressNum, insertDate, c_num, state, comment, cancelReason, cancelDate, cancelState)
+      values (#{id}, #{e_num}, #{addressNum}, #{insertDate}, #{c_num}, #{state}, #{comment}, #{cancel_reason}, #{cancel_date}, #{cancel_state})
+    </insert>
+
+    <insert id="insertReview" useGeneratedKeys="true" keyProperty="r_num" keyColumn="r_num" parameterType="Review">
+      insert into reviewTB(a_num, id, e_num, wirte_date, blog, homepage, store, receipt, state)
+      values (#{a_num}, #{id}, #{e_num}, #{wirte_date}, #{blog}, #{homepage}, #{store}, #{receipt}, #{state})
+    </insert>
+
+    <update id="reviewReport" parameterType="HashMap">
+      update reviewTB
+      set blog = #{blog}, instagram = #{instagram}, homepage = #{homepage}, store = #{store}, receipt = #{receipt}
+      where r_num = #{r_num}
+    </update>
+
+    <update id="addApplyCount" parameterType="Integer">
+      update experienceTB
+      set applyCount = applyCount+1
+      where e_num=#{e_num}
+    </update>
+
+    <update id="cancelApply" parameterType="HashMap">
+      update applyTB
+      set cancelReason = #{cancelReason}, cancelDate = #{cancelDate}, cancelState = true, state = -1
+      where a_num = #{a_num}
+    </update>
+
+    <delete id="cancelApplyFirst" parameterType="HashMap">
+      delete from applyTB
+      where a_num=#{a_num} and id=#{id}
+    </delete>
+
+    <select id="userApply" parameterType="String" resultType="Apply">
+      select *
+      from applyTB
+      where id = #{id}
+    </select>
+
+    <select id="getReviewList" parameterType="HashMap" resultType="Review">
+      select *
+      from reviewTB
+      where id=#{id} and a_num=#{a_num}
+    </select>
+
+    <update id="submitReport" parameterType="Integer">
+      update applyTB
+      set state = 4
+      where a_num = #{a_num}
+    </update>
+
+    <update id="modifyReivew" parameterType="Review">
+      update reviewTB
+      set blog=#{blog}, instagram=#{instagram}, homepage=#{homepage}, store=#{store}, receipt=#{receipt}, state=#{state}
+      where r_num=#{r_num}
+    </update>
+
+    <update id="modifyApplyState" parameterType="HashMap">
+      update applyTB
+      set state=#{state}
+      where a_num=#{a_num}
+    </update>
+
+    <update id="changeOpen" parameterType="HashMap">
+      update experienceTB
+      set open = #{open}
+      where e_num = #{e_num}
+    </update>
+
+    <insert id="insertInterestCampaign" parameterType="InterestCampaign">
+      insert into interestCampaignTB(e_num, id)
+      values (#{e_num}, #{id})
+    </insert>
+
+    <select id="selectInterestCampaignList" parameterType="String" resultType="InterestCampaign">
+      select *
+      from interestCampaignTB
+      where id = #{id}
+    </select>
+
+    <delete id="removeInterestCampaign" parameterType="Integer">
+      delete from interestCampaignTB
+      where ic_num=#{ic_num}
+    </delete>
+
+    <insert id="insertUserConsent" parameterType="UserConsent">
+      insert into userConsentTB(c_num, a_num, id, userAnser)
+      values(#{c_num}, #{a_num}, #{id}, #{userAnser})
+    </insert>
+
+    <select id="selectUserConsent" parameterType="HashMap" resultType="UserConsent">
+      select *
+      from userConsentTB
+      where id=#{id} and a_num=#{a_num}
     </select>
 
 </mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+  <mapper namespace="kr.com.amean.provider.mapper.BoardMapper">
+
+    <insert id="insertBoard" parameterType="Board">
+        insert into boardTB(boardCode, notice, title, registDate, content)
+        values(#{boardCode}, #{notice}, #{title}, #{registDate}, #{content})
+    </insert>
+
+    <update id="updateBoard" parameterType="Board">
+        update boardTB
+        set boardCode=#{boardCode}, notice=#{notice}, title=#{title}, content=#{content}
+        where b_num=#{b_num}
+    </update>
+
+    <delete id="deleteBoard" parameterType="Integer">
+        delete from boardTB
+        where b_num=#{b_num}
+    </delete>
+
+    <select id="selectBoardList" parameterType="Integer" resultType="Board">
+        select *
+        from boardTB
+        where boardCode=#{boardCode}
+        ORDER BY b_num desc
+    </select>
+
+    <select id="selectBoardListAll" parameterType="Integer" resultType="Board">
+        select *
+        from boardTB
+        ORDER BY b_num desc
+    </select>
+
+    <select id="selectBoard" parameterType="Integer" resultType="Board">
+        select *
+        from boardTB
+        where b_num=#{b_num}
+    </select>
+
+    <select id="selectInquery" parameterType="Integer" resultType="Inquery">
+        select *
+        from inqueryBoardTB
+        where in_num = #{in_num}
+    </select>
+
+    <insert id="insertInquery" parameterType="Inquery">
+        insert into inqueryBoardTB(id, title, kind, content, registDate, state)
+        values (#{id}, #{title}, #{kind}, #{content}, #{registDate}, #{state})
+    </insert>
+
+    <select id="selectInqueryList" parameterType="String" resultType="Inquery">
+        select *
+        from inqueryBoardTB
+        where id=#{id}
+    </select>
+
+  </mapper>
